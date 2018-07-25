@@ -22,6 +22,7 @@
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
     "ionic": "^3.20.0",
+    "ionic-angular": "^3.9.2",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
