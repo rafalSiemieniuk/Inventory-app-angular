@@ -12,6 +12,8 @@ import { MenuComponent } from './menu/menu/menu.component';
 import { MenuService } from './menu/menu.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationGuard } from './authentication.guard';
 
 
 
@@ -22,7 +24,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SideMenuComponent,
     MenuComponent,
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   exports: [
     OnsenModule,
@@ -32,7 +35,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   bootstrap: [AppComponent],
   entryComponents: [SideMenuComponent, ContentMenuComponent],
-  providers: [MenuService],
+  providers: [MenuService, AuthenticationGuard],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
   ],
