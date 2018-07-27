@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { OnsenModule } from 'ngx-onsenui';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ContentMenuComponent } from './content-menu/content-menu.component';
-import { SideMenuComponent } from './side-menu/side-menu.component';
-import { MenuComponent } from './menu/menu.component';
-import {MenuService} from "./menu.service";
-import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
+import { ContentMenuComponent } from './menu/content-menu/content-menu.component';
+import { SideMenuComponent } from './menu/side-menu/side-menu.component';
+import { MenuComponent } from './menu/menu/menu.component';
+import {MenuService} from './menu/menu.service';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 @NgModule({
   declarations: [
