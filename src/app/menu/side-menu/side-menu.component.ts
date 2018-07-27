@@ -7,6 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
+  links: any[] = [{
+    'name': 'Profile',
+    'router': 'profile'
+  }, {
+    'name': 'My Devices',
+    'router': 'mydevices'
+  },
+  {
+    'name': 'All Devices',
+    'router': 'alldevices'
+  }, {
+    'name': 'Employees',
+    'router': 'employees'
+  }, {
+    'name': 'Identify',
+    'router': 'identify'
+  }, {
+    'name': 'Places',
+    'router': 'places'
+  }
+  ];
+
   constructor() { }
 
   ngOnInit() {

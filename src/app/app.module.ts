@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { ProfileModule } from './modules/profile.module/profile.module';
-
 import { AppRouting } from './app.routing';
 
 import { AppComponent } from './app.component';
@@ -13,8 +11,9 @@ import { SideMenuComponent } from './menu/side-menu/side-menu.component';
 import { MenuComponent } from './menu/menu/menu.component';
 import { MenuService } from './menu/menu.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
 
 
 @NgModule({
@@ -23,14 +22,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     SideMenuComponent,
     MenuComponent,
     AppComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
   ],
   exports: [
     OnsenModule,
-
   ],
   imports: [
-    BrowserModule, OnsenModule, ProfileModule, AppRouting
+    BrowserModule, OnsenModule, AppRouting
   ],
   bootstrap: [AppComponent],
   entryComponents: [SideMenuComponent, ContentMenuComponent],
