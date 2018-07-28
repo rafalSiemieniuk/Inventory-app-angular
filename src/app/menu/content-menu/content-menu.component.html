@@ -1,6 +1,6 @@
-<ons-toolbar>
+<ons-toolbar  >
   <div class="right">
-    <ons-toolbar-button (click)="openMenu()">
+    <ons-toolbar-button (click)="openMenu()" *ngIf="router.url !== '/login'">
       <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
     </ons-toolbar-button>
   </div>
@@ -11,7 +11,7 @@
     </ons-list-item>
   </div>
 </ons-toolbar>
-<p style="text-align: center; opacity: 0.6; padding-top: 15vw;">
-  Swipe right to open the menu!
+<p style="text-align: center; opacity: 0.6; padding-top: 15vw;" >
+  <span *ngIf="router.url !== '/login'" >Swipe right to open the menu!</span>
 </p>
 <router-outlet></router-outlet>

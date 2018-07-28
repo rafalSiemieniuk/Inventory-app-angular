@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-side-menu',
@@ -29,7 +30,7 @@ export class SideMenuComponent implements OnInit {
   }
   ];
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
