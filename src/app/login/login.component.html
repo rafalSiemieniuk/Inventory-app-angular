@@ -1,3 +1,13 @@
-<p>
-  login works!
-</p>
+<form>
+  <div style="display: inline-grid; margin: 10px">
+
+    <label>Login</label>
+    <input [(ngModel)]="login" type="text" name="text" required>
+
+    <label>Password</label>
+    <input [(ngModel)]="password" type="password" name="password" required>
+
+    <button type="submit" (click)="authorizate()" >Login in</button>
+  </div>
+</form>
+
