@@ -7,7 +7,7 @@ export class AuthenticationGuard implements CanActivate {
     constructor(private router: Router) { }
 
     canActivate(): boolean {
-        if (localStorage.getItem('auth_token')) {
+        if (localStorage.getItem('token')) {
             return true;
         }
 
