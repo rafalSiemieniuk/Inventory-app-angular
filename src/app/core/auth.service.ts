@@ -8,8 +8,6 @@ import { Auth } from '../login/login.component';
 })
 export class AuthService {
 
-  basicUrl = 'http://185.238.72.22:3400';
-
   constructor(private http: HttpClient) {}
 
   getToken(): string {
@@ -20,7 +18,7 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
-  login(payload): Observable<any> {
-    return this.http.post<Auth>(`${this.basicUrl}/api/auth`, payload);
+  login(user): Observable<any> {
+    return this.http.post<Auth>('api/auth', user);
   }
 }

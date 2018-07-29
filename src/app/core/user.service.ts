@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs-compat/Observable';
-import { User } from './profile.component';
+import { User } from '../app.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileService {
+export class UserService {
 
-  basicUrl = 'http://185.238.72.22:3400';
+  user: User = null;
 
   constructor(private http: HttpClient) { }
 
-  getCurrentUser(): Observable<User> {
-    return this.http.get<User>(`${this.basicUrl}/api/users/current`);
-  }
+    getCurrentUser(): Observable<User> {
+      return this.http.get<User>('api/users/current');
+    }
 }
