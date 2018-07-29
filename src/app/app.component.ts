@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './core/user.service';
+import { Observable } from '../../node_modules/rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'app';
 
@@ -34,4 +35,5 @@ export interface User {
   email: string;
   login: string;
   officeId: boolean;
+  isAdmin: boolean;
 }

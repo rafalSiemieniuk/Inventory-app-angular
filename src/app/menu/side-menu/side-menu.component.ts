@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '../../../../node_modules/@angular/router';
+import { UserService } from '../../core/user.service';
+
+
+
 
 @Component({
   selector: 'app-side-menu',
@@ -7,6 +11,7 @@ import { Router } from '../../../../node_modules/@angular/router';
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent implements OnInit {
+
 
   links: any[] = [{
     'name': 'Profile',
@@ -30,9 +35,23 @@ export class SideMenuComponent implements OnInit {
   }
   ];
 
-  constructor(public router: Router) { }
-
-  ngOnInit() {
+  ifAdmin() {
+    if (!this.userService.user.isAdmin) {
+      this.links.splice(2, 1);
+    }
+  }
+  constructor(private router: Router, private userService: UserService) {
   }
 
+  ngOnInit() {
+    this.userService.getCurrentUser().subscribe(
+      () => {
+        this.ifAdmin();
+        console.log('dupa'); //WIP
+      }
+    );
+  }
 }
+
+
+

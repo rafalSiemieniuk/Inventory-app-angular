@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './authentication.guard';
 import { LoginComponent } from './login/login.component';
+import { AdminGuard } from './admin.guard';
 
 
 
@@ -21,7 +22,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'alldevices',
-        canActivate: [AuthenticationGuard],
+        canActivate: [AuthenticationGuard, AdminGuard],
         loadChildren: './devices/devices.module#DevicesModule'
     },
     {

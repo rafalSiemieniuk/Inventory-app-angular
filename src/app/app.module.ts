@@ -21,6 +21,7 @@ import { AuthService } from './core/auth.service';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
+import { AdminGuard } from './admin.guard';
 
 
 
@@ -45,6 +46,7 @@ import { ProfileModule } from './profile/profile.module';
     MenuService,
     AuthenticationGuard,
     AuthService,
+    AdminGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
