@@ -10,20 +10,22 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  basicUrl = 'http://185.238.72.22:3400';
+
   constructor(private authService: AuthService, private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const token: string = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    const reqCloned = req.clone({ headers });
+    const url = `${this.basicUrl}/${req.url}`;
+    const reqCloned = req.clone({ headers, url });
 
     return next.handle(reqCloned).do(
       (event: HttpEvent<any>) => { },
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            console.log('go to register (401)');
             this.router.navigate(['/login']);
           }
         }
