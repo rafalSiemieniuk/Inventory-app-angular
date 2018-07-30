@@ -57,4 +57,3 @@ import { AdminGuard } from './admin.guard';
   ],
 })
 export class AppModule { }
-// platformBrowserDynamic().bootstrapModule(AppModule);
