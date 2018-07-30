@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-side-menu',
@@ -7,7 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor() { }
+  links: any[] = [{
+    'name': 'Profile',
+    'router': 'profile'
+  }, {
+    'name': 'My Devices',
+    'router': 'mydevices'
+  },
+  {
+    'name': 'All Devices',
+    'router': 'alldevices'
+  }, {
+    'name': 'Employees',
+    'router': 'employees'
+  }, {
+    'name': 'Identify',
+    'router': 'identify'
+  }, {
+    'name': 'Places',
+    'router': 'places'
+  }
+  ];
+
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }

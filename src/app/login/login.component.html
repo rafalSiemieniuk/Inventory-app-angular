@@ -1,0 +1,21 @@
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <ons-card>
+      <div class="title">
+        Login to your account
+      </div>
+      <div class="content">
+        <div class="content__input">
+          <ons-input modifier="material" type="text" placeholder="Username" [(value)]="login"></ons-input>
+        </div>
+        <div class="content__input">
+          <ons-input modifier="material" type="password" placeholder="Password" [(value)]="password"></ons-input>
+        </div>
+        <div class="content__btn">
+          <ons-button modifier="material" (click)="authorizate()">Login</ons-button>
+        </div>
+      </div>
+    </ons-card>
+  </div>
+</ons-page>
