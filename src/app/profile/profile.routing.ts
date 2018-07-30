@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { ProfileComponent } from './profile.component';
-import { ProfileEditComponent } from './profile-edit.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { ProfileMyComponent } from './profile-my/profile-my.component';
 
 const profileRoutes: Routes = [
     {
@@ -11,9 +12,18 @@ const profileRoutes: Routes = [
         component: ProfileComponent,
         children: [
             {
+                path: 'myprofile',
+                component: ProfileMyComponent
+            },
+            {
                 path: 'edit',
                 component: ProfileEditComponent
             },
+            {
+                path: '',
+                redirectTo: 'myprofile',
+                pathMatch: 'full'
+            }
         ],
     }];
 
