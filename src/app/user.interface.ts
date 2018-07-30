@@ -6,4 +6,5 @@ export interface User {
   email: string;
   login: string;
   officeId: boolean;
+  isAdmin: boolean;
 }
