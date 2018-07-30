@@ -56,4 +56,3 @@ import { ProfileModule } from './profile/profile.module';
   ],
 })
 export class AppModule { }
-// platformBrowserDynamic().bootstrapModule(AppModule);

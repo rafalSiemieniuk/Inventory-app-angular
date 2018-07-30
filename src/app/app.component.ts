@@ -1,37 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './core/user.service';
+import { AuthService } from './core/auth.service';
+import { User } from './user.interface';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit     {
 
   title = 'app';
 
-  constructor(private userService: UserService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.getUser();
   }
 
   getUser() {
-    if (!this.userService.user) {
-      this.userService.getCurrentUser()
-        .subscribe((user) => {
-          this.userService.user = user;
+    if (!this.authService.user) {
+      this.authService.getCurrentUser()
+        .subscribe((user: User) => {
+          this.authService.user = user;
         });
     }
   }
-}
-
-export interface User {
-  id: string;
-  avatar: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  login: string;
-  officeId: boolean;
 }
