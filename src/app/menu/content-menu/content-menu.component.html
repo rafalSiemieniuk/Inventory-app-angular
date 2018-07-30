@@ -1,17 +1,19 @@
-<ons-toolbar  >
+<ons-toolbar>
   <div class="right">
     <ons-toolbar-button (click)="openMenu()" *ngIf="router.url !== '/login'">
       <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
     </ons-toolbar-button>
   </div>
   <div class="center">
-    <img src="../../../assets/logo.png"/>
+    <img src="../../../assets/logo.png" />
     <ons-list-item>
       <ons-back-button>Back</ons-back-button>
     </ons-list-item>
   </div>
 </ons-toolbar>
-<p style="text-align: center; opacity: 0.6;" >
-  <span *ngIf="router.url !== '/login'" >Swipe right to open the menu!</span>
+<p style="text-align: center; opacity: 0.6;">
+  <span *ngIf="router.url !== '/login'">Swipe right to open the menu!</span>
 </p>
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

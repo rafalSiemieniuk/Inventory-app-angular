@@ -1,20 +1,11 @@
-.login-form {
-    padding-top: 60px;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.content, .title {
+  text-align: center;
 
-   flex-direction: column;
+  &__input {
+    padding: 10px
+  }
 
-    &__label, &__btn {
-
-       margin-bottom: 30px;
-    }
-
-    &__btn:hover {
-
-
-       cursor: pointer;
-    }
+  &__btn {
+    margin: 10px;
+  }
 }
