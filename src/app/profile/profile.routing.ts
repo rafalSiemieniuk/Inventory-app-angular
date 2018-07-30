@@ -9,10 +9,11 @@ const profileRoutes: Routes = [
     {
         path: '',
         component: ProfileComponent,
-        children: [{
-            path: 'edit',
-            component: ProfileEditComponent
-        },
+        children: [
+            {
+                path: 'edit',
+                component: ProfileEditComponent
+            },
         ],
     }];
 
