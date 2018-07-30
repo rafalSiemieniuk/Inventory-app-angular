@@ -18,11 +18,11 @@ export class SideMenuComponent implements OnInit {
     'router': 'profile'
   }, {
     'name': 'My Devices',
-    'router': 'mydevices'
+    'router': 'devices/mydevices'
   },
   {
     'name': 'All Devices',
-    'router': 'alldevices'
+    'router': 'devices/alldevices'
   }, {
     'name': 'Employees',
     'router': 'employees'
@@ -44,12 +44,6 @@ export class SideMenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getCurrentUser().subscribe(
-      () => {
-        this.ifAdmin();
-        console.log('dupa'); //WIP
-      }
-    );
   }
 }
 
