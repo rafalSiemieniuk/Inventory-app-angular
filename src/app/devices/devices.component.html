@@ -1,0 +1,9 @@
+<h1>devices</h1>
+
+<br>
+<ng-container *ngIf="router.url === '/mydevices'; else All">
+ <p>MyDevices</p> 
+</ng-container>
+<ng-template #All>
+  <p>AllDevices</p> 
+</ng-template>
