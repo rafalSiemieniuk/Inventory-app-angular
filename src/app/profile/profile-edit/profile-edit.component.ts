@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -7,19 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditComponent implements OnInit {
 
-  offices: any[] = [{
-    'name': 'Warsaw',
-  }, {
-    'name': 'Paris',
-  },
-  {
-    'name': 'London',
-  }
+  offices: any[] = [
   ];
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-  }
+    this.authService.getOffices().subscribe((item) => {
+      item.forEach(e => {
+        this.offices.push(e);
+      });
 
+    });
+  }
 }
+
+
