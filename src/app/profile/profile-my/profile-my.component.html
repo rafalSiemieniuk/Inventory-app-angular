@@ -1,6 +1,13 @@
 <div *ngIf="authService.user" class="center">
+
   <ons-list-item modifier="nodivider" class="center">
-    <img class="list-item__thumbnail" style="width: 50%; height: auto" src="{{authService.user.avatar}}"/>
+    <img *ngIf="authService.user.avatar" class="list-item__thumbnail" style="width: 50%; height: auto" src="{{authService.user.avatar}}"/>
+    <img *ngIf="!authService.user.avatar" src="../../../assets/Papirus-Team-Papirus-Status-Avatar-default.svg">
+  </ons-list-item>
+  <ons-list-item class=" content-right" modifier="nodivider">
+    <ons-button modifier="quiet" routerLink="../edit">
+      <ons-icon icon="ion-edit"  class="" size="10vw"></ons-icon>
+    </ons-button>
   </ons-list-item>
   <ons-list-item modifier="nodivider" class="center">
     {{authService.user.firstName}}
