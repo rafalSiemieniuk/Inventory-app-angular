@@ -27,11 +27,6 @@ export class QrcodeWriterComponent implements OnInit {
       .catch(err => {
         console.error(err);
       });
-    // QRCode.toCanvas(document.getElementById('canvas'), 'qr code', function (error) {
-    //   if (error) {
-    //     console.error(error);
-    //   }
-    //   console.log('success!');
-    // });
+
   }
 }
