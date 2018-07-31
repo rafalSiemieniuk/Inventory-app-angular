@@ -10,7 +10,6 @@ import { ContentMenuComponent } from './menu/content-menu/content-menu.component
 import { SideMenuComponent } from './menu/side-menu/side-menu.component';
 import { MenuComponent } from './menu/menu/menu.component';
 import { MenuService } from './menu/menu.service';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationGuard } from './authentication.guard';
@@ -22,6 +21,7 @@ import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
 import { QrcodeWriterComponent } from './qrcode-writer/qrcode-writer.component';
+import { AdminGuard } from './admin.guard';
 
 
 
@@ -47,6 +47,7 @@ import { QrcodeWriterComponent } from './qrcode-writer/qrcode-writer.component';
     MenuService,
     AuthenticationGuard,
     AuthService,
+    AdminGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
