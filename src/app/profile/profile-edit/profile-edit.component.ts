@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../core/auth.service';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -8,18 +8,17 @@ import { AuthService } from '../../core/auth.service';
 })
 export class ProfileEditComponent implements OnInit {
 
-  offices: any[] = [
-  ];
+  offices: any[] = [];
 
-  constructor(private authService: AuthService) { }
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
-    this.authService.getOffices().subscribe((item) => {
+    this.profileService.getOffices().subscribe((item) => {
       item.forEach(e => {
         this.offices.push(e);
       });
-
     });
+
   }
 }
 

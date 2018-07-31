@@ -29,7 +29,5 @@ export class AuthService {
     return this.http.get<User>('api/users/current');
   }
 
-  getOffices(): Observable<Array<any>> {
-    return this.http.get<Array<any>>('api/offices');
-  }
+
 }
