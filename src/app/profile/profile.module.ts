@@ -12,7 +12,7 @@ import { ProfileService } from './profile.service';
     declarations: [ProfileComponent, ProfileEditComponent, ProfileMyComponent],
     imports: [CommonModule, ProfileRouting],
     exports: [ProfileRouting],
-    providers: [],
+    providers: [ProfileService],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
     ]
