@@ -11,7 +11,7 @@ export class MenuService {
   get menu$(): Observable<any> {
     return this.subject.asObservable();
   }
-  open() {
+  toggle() {
     this.subject.next();
   }
 
