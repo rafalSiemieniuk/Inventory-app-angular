@@ -1,5 +1,20 @@
-<p>
-  profile-my works!
-  <a routerLink="../edit">edit</a>
+<div *ngIf="authService.user" class="center">
+  <ons-list-item modifier="nodivider" class="center">
+    <img class="list-item__thumbnail" style="width: 50%; height: auto" src="{{authService.user.avatar}}"/>
+  </ons-list-item>
+  <ons-list-item modifier="nodivider" class="center">
+    {{authService.user.firstName}}
+    {{authService.user.lastName}}
+  </ons-list-item>
+  <ons-list-item modifier="nodivider" class="center">
+    {{authService.user.officeId}}
+  </ons-list-item>
+  <ons-list-item modifier="nodivider" class="center">
+    <app-qrcode-writer [code]=authService.user.id [scaleqr]="scale"></app-qrcode-writer>
+  </ons-list-item>
 
-</p>
+
+</div>
+<div *ngIf="!authService.user">
+  default view
+</div>
