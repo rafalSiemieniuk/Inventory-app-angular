@@ -21,6 +21,7 @@ import { AuthService } from './core/auth.service';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
+import { QrcodeWriterComponent } from './qrcode-writer/qrcode-writer.component';
 
 
 
@@ -32,12 +33,13 @@ import { ProfileModule } from './profile/profile.module';
     MenuComponent,
     PageNotFoundComponent,
     LoginComponent,
+    // QrcodeWriterComponent,
   ],
   exports: [
     OnsenModule,
   ],
   imports: [
-    BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule
+    BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule,
   ],
   bootstrap: [AppComponent],
   entryComponents: [SideMenuComponent, ContentMenuComponent],

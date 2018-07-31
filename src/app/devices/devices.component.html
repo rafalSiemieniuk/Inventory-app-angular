@@ -2,8 +2,10 @@
 
 <br>
 <ng-container *ngIf="router.url === '/mydevices'; else All">
- <p>MyDevices</p> 
+ <p>MyDevices</p>
 </ng-container>
 <ng-template #All>
-  <p>AllDevices</p> 
+  <p>AllDevices</p>
 </ng-template>
+<app-qrcode-writer [scaleqr]="scale"></app-qrcode-writer>
+
