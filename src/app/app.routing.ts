@@ -11,17 +11,12 @@ const appRoutes: Routes = [
 
     {
         path: 'profile',
-        // canActivate: [AuthenticationGuard],
+        canActivate: [AuthenticationGuard],
         loadChildren: './profile/profile.module#ProfileModule'
     },
     {
-        path: 'mydevices',
-        // canActivate: [AuthenticationGuard],
-        loadChildren: './devices/devices.module#DevicesModule'
-    },
-    {
-        path: 'alldevices',
-        // canActivate: [AuthenticationGuard],
+        path: 'devices',
+        canActivate: [AuthenticationGuard],
         loadChildren: './devices/devices.module#DevicesModule'
     },
     {
