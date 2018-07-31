@@ -1,0 +1,15 @@
+.content, .title {
+    text-align: center;
+  
+    &__input {
+      padding: 10px
+    }
+  
+    &__btn {
+      margin: 10px;
+    }
+  }
+
+  .back{
+      text-align: left;
+  }

@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditComponent implements OnInit {
 
+  offices: any[] = [{
+    'name': 'Warsaw',
+  }, {
+    'name': 'Paris',
+  },
+  {
+    'name': 'London',
+  }
+  ];
+
   constructor() { }
 
   ngOnInit() {
