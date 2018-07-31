@@ -9,24 +9,29 @@ import QRCode from 'qrcode';
 export class QrcodeWriterComponent implements OnInit {
 
   url = null;
-  content = 'I am a pony';
 
-  // @Input() scaleqr; <--przyda się do zmiany w innych komponentach
-  scaleqr = 5;
-  opts = {
-    scale: this.scaleqr,
-  };
+  @Input() scaleqr;
+
+  @Input()
+  set code(value) {
+    this.generateQR(value);
+  }
 
   constructor() { }
 
   ngOnInit() {
-    QRCode.toDataURL(this.content, this.opts)
+
+
+  }
+  generateQR(code) {
+    QRCode.toDataURL(code, {
+      scale: this.scaleqr || 5,
+    })
       .then(url => {
         this.url = url;
       })
       .catch(err => {
         console.error(err);
       });
-
   }
 }
