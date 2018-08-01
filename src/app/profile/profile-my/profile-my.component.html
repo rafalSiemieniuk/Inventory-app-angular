@@ -14,7 +14,7 @@
       {{authService.user.firstName}}
       {{authService.user.lastName}}
     </ons-list-item>
-    <ons-list-item modifier="nodivider" class="center">
+    <ons-list-item *ngIf="office" modifier="nodivider" class="center">
       <!--<button (click)="getOffice(authService.user.officeId)"></button>-->
       {{office.name}}
     </ons-list-item>

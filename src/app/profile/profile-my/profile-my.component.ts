@@ -13,23 +13,16 @@ export class ProfileMyComponent implements OnInit {
 
   scale = 5;
   office: Office;
-  user: User;
+  // user: User;
   constructor(public authService: AuthService, private profileService: ProfileService) { }
   ngOnInit() {
-     this.authService.getCurrentUser().subscribe(item => {
-      this.user = item;
-      this.getOffice(this.user.officeId);
-
-    });
-
+     this.getOffice();
   }
-  getOffice(id) {
+  getOffice() {
     this.profileService.getOffices().subscribe((item) => {
       item.forEach(e => {
-        if (e.id === id) {
+        if (e.id === this.authService.user.officeId) {
           this.office = e;
-          console.log(this.office.name);
-
         }
       });
     });
