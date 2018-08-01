@@ -26,6 +26,7 @@ export class QrcodeWriterComponent implements OnInit {
   generateQR(code) {
     QRCode.toDataURL(code, {
       scale: this.scaleqr || 5,
+      margin: 0,
     })
       .then(url => {
         this.url = url;

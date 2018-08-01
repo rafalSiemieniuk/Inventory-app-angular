@@ -15,7 +15,6 @@ export class MenuComponent implements OnInit {
   constructor(private menuService: MenuService) {
     this.menuService.menu$.subscribe(() => this.splitter.nativeElement.side.toggle());
   }
-  
   ngOnInit() {
   }
 
