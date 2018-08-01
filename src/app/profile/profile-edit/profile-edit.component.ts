@@ -40,9 +40,14 @@ export class ProfileEditComponent implements OnInit {
 
     const editedOffice = filterOffices[0];
 
-    this.data.name = this.nameEdit.nativeElement.value;
+    this.data.firstName = this.nameEdit.nativeElement.value;
     this.data.officeId = editedOffice.id;
 
+
+    console.log(this.data);
+    this.profileService.updateUser(this.data).subscribe((user)=>{
+      console.log(user);
+    });
 
   }
 }
