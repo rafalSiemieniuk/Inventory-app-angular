@@ -1,27 +1,30 @@
-<div *ngIf="authService.user" class="center">
+<ons-card style="margin-top: 7vw">
+  <div *ngIf="authService.user" class="center">
 
-  <ons-list-item modifier="nodivider" class="center">
-    <img *ngIf="authService.user.avatar" class="list-item__thumbnail" style="width: 50%; height: auto" src="{{authService.user.avatar}}"/>
-    <img *ngIf="!authService.user.avatar" src="../../../assets/Papirus-Team-Papirus-Status-Avatar-default.svg">
-  </ons-list-item>
-  <!--<ons-list-item class=" content-right" modifier="nodivider">-->
+    <ons-list-item modifier="nodivider"  class="center">
+      <img *ngIf="authService.user.avatar" class="list-item__thumbnail" style="width: 50%; height: auto" src="{{authService.user.avatar}}"/>
+      <img *ngIf="!authService.user.avatar" src="../../../assets/Papirus-Team-Papirus-Status-Avatar-default.svg">
+    </ons-list-item>
+    <!--<ons-list-item class=" content-right" modifier="nodivider">-->
     <ons-button modifier="quiet" class="content-right" routerLink="../edit">
       <ons-icon icon="ion-edit"  size="10vw"></ons-icon>
     </ons-button>
-  <!--</ons-list-item>-->
-  <ons-list-item modifier="nodivider" class="center">
-    {{authService.user.firstName}}
-    {{authService.user.lastName}}
-  </ons-list-item>
-  <ons-list-item modifier="nodivider" class="center">
-    {{authService.user.officeId}}
-  </ons-list-item>
-  <ons-list-item modifier="nodivider" class="center">
-    <app-qrcode-writer [code]=authService.user.id [scaleqr]="scale"></app-qrcode-writer>
-  </ons-list-item>
+    <!--</ons-list-item>-->
+    <ons-list-item modifier="nodivider" class="center">
+      {{authService.user.firstName}}
+      {{authService.user.lastName}}
+    </ons-list-item>
+    <ons-list-item modifier="nodivider" class="center">
+      <!--<button (click)="getOffice(authService.user.officeId)"></button>-->
+      {{office.name}}
+    </ons-list-item>
+    <ons-list-item modifier="nodivider" class="center">
+      <app-qrcode-writer [code]=authService.user.id [scaleqr]="scale"></app-qrcode-writer>
+    </ons-list-item>
 
 
-</div>
+  </div>
+</ons-card>
 <div *ngIf="!authService.user">
   default view
 </div>
