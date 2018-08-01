@@ -22,6 +22,7 @@
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
     "instascan": "^1.0.0",
+    "jsqr": "^1.1.1",
     "ngx-onsenui": "^4.2.2",
     "onsenui": "^2.10.4",
     "qrcode": "^1.2.0",

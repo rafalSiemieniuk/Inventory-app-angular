@@ -1,3 +1,19 @@
-<p>
-  qrcode-reader works!
-</p>
+<br>
+<p *ngIf="qrCode">{{qrCode}}</p>
+=========================
+<h1>
+  jsQR Demo</h1>
+<a id="githubLink" href="https://github.com/cozmo/jsQR">View documentation on Github</a>
+<p>Pure JavaScript QR code decoding library.</p>
+<div #loadingMessage></div>
+<canvas #canvasEl></canvas>
+<div #output hidden>
+  <div #outputMessage>No QR code detected.</div>
+  <div hidden>
+    <b>Data:</b>
+    <span #outputData></span>
+  </div>
+</div>
+<br>
+=========================
+<br>
