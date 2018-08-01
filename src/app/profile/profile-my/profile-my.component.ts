@@ -19,9 +19,8 @@ export class ProfileMyComponent implements OnInit {
   getOffice() {
     this.profileService.getOffices().subscribe((item) => {
       item.forEach(e => {
-        if (e.id === this.authService.user.officeId) {
-          this.office = e;
-        }
+        this.office = item.find(office =>
+        office.id === this.authService.user.officeId);
       });
     });
   }
