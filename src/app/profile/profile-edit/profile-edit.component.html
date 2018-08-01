@@ -9,17 +9,19 @@
       <div class="title">
         Edit Your Account
       </div>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
       <div class="content">
         <div class="content__input">
-          <ons-input modifier="material" type="text" placeholder="Name" ></ons-input>
-        </div>
-        <ons-select id="choose-office" >
+          <ons-input modifier="material" type="text" placeholder="Name" formControlName="name" ngDefaultControl></ons-input>
+        </div> <!-- bez ngDefaultControl nie działa-->
+        <!-- <ons-select id="choose-office"  formControlName="office" ngDefaultControl>
             <option *ngFor="let office of offices">{{office.name}}</option>
-          </ons-select>
+          </ons-select> -->
         <div class="content__btn">
-          <ons-button modifier="large" >Save</ons-button>
+          <button type="submit" modifier="large" >Save</button> <!-- ons-button nie działa, a button działa-->
         </div>
       </div>
+    </form>
     </ons-card>
   </div>
 </ons-page>

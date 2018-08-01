@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile.service';
+import { FormControl, FormGroup } from '@angular/forms';
+
+
+
 
 @Component({
   selector: 'app-profile-edit',
@@ -9,8 +13,15 @@ import { ProfileService } from '../profile.service';
 export class ProfileEditComponent implements OnInit {
 
   offices: any[] = [];
+  target = '';
+  editForm: FormGroup;
+  constructor(private profileService: ProfileService) {
+    this.editForm = new FormGroup({
+      name: new FormControl(''),
+      office: new FormControl([])
+    });
+  }
 
-  constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
     this.profileService.getOffices().subscribe((item) => {
@@ -19,6 +30,10 @@ export class ProfileEditComponent implements OnInit {
       });
     });
 
+
+  }
+  onSubmit() {
+    console.log('dupa');
   }
 }
 

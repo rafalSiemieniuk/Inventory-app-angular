@@ -8,10 +8,11 @@ import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 import {ProfileMyComponent} from './profile-my/profile-my.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ProfileService } from './profile.service';
+import { ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [ProfileComponent, ProfileEditComponent, ProfileMyComponent, QrcodeWriterComponent],
-    imports: [CommonModule, ProfileRouting],
+    imports: [CommonModule, ProfileRouting, ReactiveFormsModule],
     exports: [ProfileRouting],
     providers: [ProfileService],
     schemas: [
