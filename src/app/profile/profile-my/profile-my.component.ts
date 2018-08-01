@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../core/auth.service';
 
 @Component({
   selector: 'app-profile-my',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileMyComponent implements OnInit {
 
-  constructor() { }
+  scale = 5;
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
+    // console.log(this.authService.user.id);
+
   }
 
 }
