@@ -1,8 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, ViewChildren } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { AuthService } from '../../core/auth.service';
-
-
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -19,7 +18,7 @@ export class ProfileEditComponent implements OnInit {
   @ViewChild('nameEdit') nameEdit: ElementRef;
   @ViewChild('officeEdit') officeEdit: ElementRef;
 
-  constructor(private profileService: ProfileService, private authService: AuthService) {
+  constructor(private profileService: ProfileService, private authService: AuthService, private http: HttpClient) {
 
   }
 
@@ -33,7 +32,7 @@ export class ProfileEditComponent implements OnInit {
   }
   onSubmit() {
     this.data = this.authService.user;
-    this.data.name = this.nameEdit.nativeElement.value;
+
 
     const filterOffices = this.offices.filter((office) => {
       return office.name === this.officeEdit.nativeElement.value;
@@ -41,6 +40,7 @@ export class ProfileEditComponent implements OnInit {
 
     const editedOffice = filterOffices[0];
 
+    this.data.name = this.nameEdit.nativeElement.value;
     this.data.officeId = editedOffice.id;
 
 

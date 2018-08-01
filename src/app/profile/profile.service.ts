@@ -12,4 +12,8 @@ export class ProfileService {
     getOffices(): Observable<Array<any>> {
         return this.http.get<Array<any>>('api/offices');
     }
+
+//     sendCurrentUser(): Observable<any> {
+//         return this.http.put<any>('api/users/current', );
+//       }
 }
