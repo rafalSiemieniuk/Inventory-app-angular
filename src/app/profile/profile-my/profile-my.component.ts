@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../core/auth.service';
 import {ProfileService} from '../profile.service';
-import {User} from '../../user.interface';
 import {Office} from '../../office.iterface';
 
 @Component({
@@ -13,7 +12,6 @@ export class ProfileMyComponent implements OnInit {
 
   scale = 5;
   office: Office;
-  // user: User;
   constructor(public authService: AuthService, private profileService: ProfileService) { }
   ngOnInit() {
      this.getOffice();
