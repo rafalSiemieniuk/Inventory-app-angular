@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../../core/auth.service';
 
 
 
@@ -13,13 +13,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ProfileEditComponent implements OnInit {
 
   offices: any[] = [];
-  target = '';
-  editForm: FormGroup;
-  constructor(private profileService: ProfileService) {
-    this.editForm = new FormGroup({
-      name: new FormControl(''),
-      office: new FormControl([])
-    });
+  data = <any>{};
+
+  constructor(private profileService: ProfileService, private authService: AuthService) {
+
   }
 
 
@@ -33,7 +30,22 @@ export class ProfileEditComponent implements OnInit {
 
   }
   onSubmit() {
-    console.log('dupa');
+    this.data = this.authService.user;
+    this.data.name = (document.getElementById('name') as HTMLInputElement).value;
+
+    const filterOffices = this.offices.filter(function (office) {
+      return office.name === (document.getElementById('office') as HTMLSelectElement).value;
+    });
+
+    const editedOffice = filterOffices[0];
+
+
+    console.log(editedOffice);
+
+    this.data.officeId = editedOffice.id;
+
+    console.log(this.data);
+
   }
 }
 
