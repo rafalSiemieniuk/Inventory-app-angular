@@ -12,9 +12,9 @@
       
         <div class="content">
           <div class="content__input">
-            <ons-input modifier="material" type="text" placeholder="Name" id="name"></ons-input>
+            <ons-input modifier="material" type="text" placeholder="Name"  #nameEdit></ons-input>
           </div>
-          <ons-select id="choose-office" id="office">
+          <ons-select id="choose-office" id="office" #officeEdit>
             <option *ngFor="let office of offices">{{office.name}}</option>
           </ons-select>
           <div class="content__btn">
