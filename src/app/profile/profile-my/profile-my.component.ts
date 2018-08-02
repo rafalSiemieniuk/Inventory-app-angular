@@ -12,8 +12,5 @@ export class ProfileMyComponent implements OnInit {
   ngOnInit() {
   }
 
-  test(code) {
-    alert(code);
-  }
 
 }

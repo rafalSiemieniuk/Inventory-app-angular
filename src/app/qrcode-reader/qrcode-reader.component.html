@@ -1,19 +1,16 @@
-<br>
-<p *ngIf="qrCode">{{qrCode}}</p>
-=========================
-<h1>
-  jsQR Demo</h1>
-<a id="githubLink" href="https://github.com/cozmo/jsQR">View documentation on Github</a>
-<p>Pure JavaScript QR code decoding library.</p>
-<div #loadingMessage></div>
-<canvas #canvasEl></canvas>
-<div #output hidden>
-  <div #outputMessage>No QR code detected.</div>
-  <div hidden>
-    <b>Data:</b>
-    <span #outputData></span>
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <ons-card class="card">
+      <div class="title" [ngClass]="{ 'hidden': noCameraPermissionClass }">
+        Scan your device's QR code
+      </div>
+      <div class="qr-code-information" [ngClass]="{ 'hidden': siteLoadedClass }">{{loadingMessage}}</div>
+      <canvas #canvasEl class="video" [ngClass]="{ 'hidden': isLoadingSiteClass }"></canvas>
+      <div class="qr-code-information" [ngClass]="{ 'hidden': isLoadingSiteClass }">
+        <p *ngIf="outputData">
+          <b>Your QR code: </b>{{outputData}}</p>
+      </div>
+    </ons-card>
   </div>
-</div>
-<br>
-=========================
-<br>
+</ons-page>

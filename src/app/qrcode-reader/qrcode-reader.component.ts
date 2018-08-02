@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import jsQR from 'jsqr';
-import { ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { ViewChild, ElementRef } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
+import jsQR from 'jsqr';
 
 @Component({
   selector: 'app-qrcode-reader',
@@ -10,43 +10,43 @@ import { EventEmitter, Output } from '@angular/core';
 })
 export class QrcodeReaderComponent implements OnInit {
 
+  @Output() includeToParent: EventEmitter<any> = new EventEmitter();
   @ViewChild('canvasEl') canvasEl: ElementRef;
-  @ViewChild('outputContainer') outputContainer: ElementRef;
-  @ViewChild('outputMessage') outputMessage: ElementRef;
-  @ViewChild('outputData') outputData: ElementRef;
-  @ViewChild('loadingMessage') loadingMessage: ElementRef;
   public context: CanvasRenderingContext2D;
-
-  @Output() open: EventEmitter<any> = new EventEmitter();
-
 
   video = document.createElement('video');
 
+  outputData = 'No detected.';
+  loadingMessage = 'Loading video...';
+  noCameraPermissionClass = false;
+  siteLoadedClass = false;
+  isLoadingSiteClass = true;
+
   qrCode: string = null;
-  xxx;
+  tickBind;
+
   constructor() { }
 
   ngOnInit() {
     this.context = (<HTMLCanvasElement>this.canvasEl.nativeElement).getContext('2d');
-    this.xxx = this.tick.bind(this);
+    this.tickBind = this.tick.bind(this);
     navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }).then((stream) => {
       this.video.srcObject = stream;
-      // this.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
       this.video.play();
-      requestAnimationFrame(this.xxx);
+      requestAnimationFrame(this.tickBind);
+    }).catch((error) => {
+      this.noCameraPermissionClass = true;
+      this.loadingMessage = 'Unable to access video stream (please make sure you have a webcam enabled)';
     });
   }
 
   tick() {
-    // this.loadingMessage.nativeElement.textContent = 'Loading video...';
     if (this.video.readyState === this.video.HAVE_ENOUGH_DATA) {
-      // loadingMessage.hidden = true;
-      // this.canvasEl.nativeElement.hidden = false;
-      // this.outputContainer.hidden = false;
-
+      this.siteLoadedClass = true;
+      this.isLoadingSiteClass = false;
       this.canvasEl.nativeElement.height = this.video.videoHeight;
       this.canvasEl.nativeElement.width = this.video.videoWidth;
-       this.context.drawImage(this.video, 0, 0, this.canvasEl.nativeElement.width, this.canvasEl.nativeElement.height);
+      this.context.drawImage(this.video, 0, 0, this.canvasEl.nativeElement.width, this.canvasEl.nativeElement.height);
       const imageData = this.context.getImageData(0, 0, this.canvasEl.nativeElement.width, this.canvasEl.nativeElement.height);
       const code = jsQR(imageData.data, imageData.width, imageData.height);
       if (code) {
@@ -54,29 +54,16 @@ export class QrcodeReaderComponent implements OnInit {
         this.drawLine(code.location.topRightCorner, code.location.bottomRightCorner, '#FF3B58');
         this.drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, '#FF3B58');
         this.drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#FF3B58');
-        // this.outputMessage.hidden = true;
-        // this.outputData.parentElement.hidden = false;
-        this.outputData.nativeElement.textContent = code.data;
-        this.qrCode = code.data;
-
-        if(code.data) {
-          this.open.emit(code.data);
+        if (code.data) {
+          this.outputData = code.data;
+          this.includeToParent.emit(code.data);
         }
-      } else {
-        // this.outputMessage.hidden = false;
-        // this.outputData.parentElement.hidden = true;
       }
     }
-    requestAnimationFrame(this.xxx);
+    requestAnimationFrame(this.tickBind);
   }
 
   private drawLine(begin, end, color) {
-    // this.context.beginPath();
-    // this.context.strokeStyle = 'purple'; // Purple path
-    // this.context.moveTo(50, 0);
-    // this.context.lineTo(150, 130);
-    // this.context.stroke(); // Draw it
-
     this.context.beginPath();
     this.context.moveTo(begin.x, begin.y);
     this.context.lineTo(end.x, end.y);
@@ -84,5 +71,4 @@ export class QrcodeReaderComponent implements OnInit {
     this.context.strokeStyle = color;
     this.context.stroke();
   }
-
 }
