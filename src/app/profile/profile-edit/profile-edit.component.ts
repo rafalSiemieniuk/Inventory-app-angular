@@ -43,11 +43,7 @@ export class ProfileEditComponent implements OnInit {
     this.data.firstName = this.nameEdit.nativeElement.value;
     this.data.officeId = editedOffice.id;
 
-
-    console.log(this.data);
-    this.profileService.updateUser(this.data).subscribe((user)=>{
-      console.log(user);
-    });
+    this.profileService.updateUser(this.data);
 
   }
 }
