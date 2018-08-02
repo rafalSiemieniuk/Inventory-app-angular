@@ -28,6 +28,4 @@ export class AuthService {
   getCurrentUser(): Observable<User> {
     return this.http.get<User>('api/users/current');
   }
-
-
 }
