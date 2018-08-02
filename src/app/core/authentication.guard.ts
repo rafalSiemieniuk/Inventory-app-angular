@@ -14,7 +14,10 @@ export class AuthenticationGuard implements CanActivate {
       return true;
     }
     return this.authService.getCurrentUser().toPromise()
-      .then((currentUser) => currentUser && currentUser.id !== '')
+      .then((currentUser) => {
+        this.authService.user = currentUser;
+        return currentUser && currentUser.id !== '';
+      })
       .catch(() => {
         this.authService.user = null;
         return false;
