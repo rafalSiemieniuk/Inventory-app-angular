@@ -10,7 +10,7 @@ import jsQR from 'jsqr';
 })
 export class QrcodeReaderComponent implements OnInit {
 
-  @Output() includeToParent: EventEmitter<any> = new EventEmitter();
+  @Output() callback: EventEmitter<any> = new EventEmitter();
   @ViewChild('canvasEl') canvasEl: ElementRef;
   public context: CanvasRenderingContext2D;
 
@@ -56,7 +56,7 @@ export class QrcodeReaderComponent implements OnInit {
         this.drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#FF3B58');
         if (code.data) {
           this.outputData = code.data;
-          this.includeToParent.emit(code.data);
+          this.callback.emit(code.data);
         }
       }
     }
