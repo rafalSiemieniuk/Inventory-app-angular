@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../menu.service';
 import {Router} from '@angular/router';
-
+import {routes} from '../routes'
 @Component({
   selector: 'ons-page[sideMenu]',
   templateUrl: './content-menu.component.html',
@@ -24,23 +24,8 @@ export class ContentMenuComponent implements OnInit {
   }
 
   changeTitle() {
-    if (this.router.url === '/login' ) {
-      this.title = 'Login';
-    } else if (this.router.url === '/profile/myprofile' ) {
-      this.title = 'Profile';
-    } else if (this.router.url === '/profile/editprofile' ) {
-      this.title = 'Profile';
-    } else if (this.router.url === '/devices/mydevices' ) {
-      this.title = 'Devices';
-    } else if (this.router.url === '/devices/alldevices' ) {
-      this.title = 'Devices';
-    } else if (this.router.url === '/employees' ) {
-      this.title = 'Employees';
-    } else if (this.router.url === '/identify' ) {
-      this.title = 'Identify';
-    } else if (this.router.url === '/places' ) {
-      this.title = 'Places';
-    }
+      const activeRouter = routes.find(route =>   this.router.url.indexOf(route.router) > -1);
+      this.title = activeRouter && activeRouter.name;
   }
 
 }
