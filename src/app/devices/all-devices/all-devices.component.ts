@@ -4,7 +4,7 @@ import { DevicesService } from '../devices.service';
 @Component({
   selector: 'app-all-devices',
   templateUrl: './all-devices.component.html',
-  styleUrls: ['./all-devices.component.scss']
+  styleUrls: ['./all-devices.component.scss'],
 })
 export class AllDevicesComponent implements OnInit {
 
