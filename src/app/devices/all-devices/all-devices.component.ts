@@ -18,4 +18,8 @@ export class AllDevicesComponent implements OnInit {
       this.devices = items;
     });
   }
+
+  onSearchChange(searchValue: string) {
+    console.log(searchValue.toLowerCase());
+  }
 }
