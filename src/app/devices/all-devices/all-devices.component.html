@@ -3,12 +3,19 @@
   <div class="content">
     <ons-card>
       <div class="content">
-        <p>
-          <ons-search-input class="search" id="text" placeholder="Search"></ons-search-input>
-        </p>
-          <ons-list class="ons-list" >
-            <ons-list-item tappable *ngFor="let device of devices"><span>{{device.name}}</span></ons-list-item>
-          </ons-list>
+        <div class="content__wrap">
+          <p>
+            <ons-search-input class="search" id="text" placeholder="Search"></ons-search-input>
+          </p>
+          <ons-button modifier="quiet" class="content-right" routerLink="./add">
+            <ons-icon icon="ion-plus" size="35px"></ons-icon>
+          </ons-button>
+        </div>
+        <ons-list class="ons-list">
+          <ons-list-item tappable *ngFor="let device of devices">
+            <span>{{device.name}}</span>
+          </ons-list-item>
+        </ons-list>
       </div>
     </ons-card>
   </div>
