@@ -12,7 +12,11 @@ export class DevicesService {
     constructor(private http: HttpClient, private authService: AuthService) {
 
     }
-    getDevices(device): Observable<Array<any>> {
+    getDevices(): Observable<Array<any>> {
+        return this.http.get<Array<any>>('api/devices');
+    }
+
+    getDevicesFiltered(device): Observable<Array<any>> {
         const params = new HttpParams().set('search', device);
         return this.http.get<Array<any>>('api/devices', { params: params });
     }
