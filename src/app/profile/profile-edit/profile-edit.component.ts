@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewChildren } from '@angular/core';
+import { ProfileService } from '../profile.service';
+import { AuthService } from '../../core/auth.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-profile-edit',
@@ -7,9 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditComponent implements OnInit {
 
-  constructor() { }
+  offices: any[] = [];
+  data = <any>{};
 
-  ngOnInit() {
+
+  @ViewChild('nameEdit') nameEdit: ElementRef;
+  @ViewChild('officeEdit') officeEdit: ElementRef;
+
+  constructor(private profileService: ProfileService, private authService: AuthService, private http: HttpClient) {
+
   }
 
+
+  ngOnInit() {
+    this.profileService.getOffices().subscribe((items) => {
+      this.offices = items;
+    });
+
+
+  }
+  onSubmit() {
+    this.data = this.authService.user;
+
+
+    const filterOffices = this.offices.filter((office) => {
+      return office.name === this.officeEdit.nativeElement.value;
+    });
+
+    const editedOffice = filterOffices[0];
+
+    this.data.firstName = this.nameEdit.nativeElement.value;
+    this.data.officeId = editedOffice.id;
+
+    this.profileService.updateUser(this.data).subscribe();
+
+  }
 }
+
+
