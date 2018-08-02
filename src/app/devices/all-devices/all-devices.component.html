@@ -1,3 +1,15 @@
-<p>
-  all-devices works!
-</p>
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <ons-card>
+      <div class="content">
+        <p>
+          <ons-search-input class="search" id="text" placeholder="Search"></ons-search-input>
+        </p>
+          <ons-list class="ons-list" >
+            <ons-list-item tappable *ngFor="let device of devices"><span>{{device.name}}</span></ons-list-item>
+          </ons-list>
+      </div>
+    </ons-card>
+  </div>
+</ons-page>
