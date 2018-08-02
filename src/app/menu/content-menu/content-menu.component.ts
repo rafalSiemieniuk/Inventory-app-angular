@@ -24,7 +24,7 @@ export class ContentMenuComponent implements OnInit {
   }
 
   changeTitle() {
-      const activeRouter = routes.find(route =>   this.router.url.indexOf(route.router) > -1);
+      const activeRouter = routes.find(route =>   this.router.url.indexOf(route.router) === 1);
       this.title = activeRouter && activeRouter.name;
   }
 
