@@ -12,7 +12,7 @@ import { MenuComponent } from './menu/menu/menu.component';
 import { MenuService } from './menu/menu.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
-import { AuthenticationGuard } from './authentication.guard';
+import { AuthenticationGuard } from './core/authentication.guard';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';

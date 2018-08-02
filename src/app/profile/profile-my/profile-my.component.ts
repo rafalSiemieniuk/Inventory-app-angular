@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AuthService} from '../../core/auth.service';
+import {ProfileService} from '../profile.service';
+import {Office} from '../../office.iterface';
 
 @Component({
   selector: 'app-profile-my',
@@ -7,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileMyComponent implements OnInit {
 
-  constructor() { }
-
+  scale = 5;
+  office: Office;
+  constructor(public authService: AuthService, private profileService: ProfileService) { }
   ngOnInit() {
+     this.getOffice();
   }
-
-
+  getOffice() {
+    this.profileService.getOffices().subscribe((item) => {
+        this.office = item.find(office =>
+        office.id === this.authService.user.officeId);
+    });
+  }
 }

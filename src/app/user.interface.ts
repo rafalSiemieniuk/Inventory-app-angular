@@ -8,3 +8,4 @@ export interface User {
   officeId: boolean;
   isAdmin: boolean;
 }
+
