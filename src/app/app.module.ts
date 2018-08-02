@@ -20,7 +20,6 @@ import { AuthService } from './core/auth.service';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
-import { QrcodeWriterComponent } from './qrcode-writer/qrcode-writer.component';
 import { AdminGuard } from './admin.guard';
 
 
@@ -35,7 +34,7 @@ import { AdminGuard } from './admin.guard';
     LoginComponent,
   ],
   exports: [
-    OnsenModule,
+    OnsenModule
   ],
   imports: [
     BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule,
