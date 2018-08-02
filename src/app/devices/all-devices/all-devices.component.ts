@@ -14,12 +14,14 @@ export class AllDevicesComponent implements OnInit {
   constructor(private devicesService: DevicesService) { }
 
   ngOnInit() {
-    this.devicesService.getDevices().subscribe((items) => {
+    this.devicesService.getDevices('').subscribe((items) => {
       this.devices = items;
     });
   }
 
   onSearchChange(searchValue: string) {
-    console.log(searchValue.toLowerCase());
+    this.devicesService.getDevices(searchValue).subscribe((items) => {
+      this.devices = items;
+    });
   }
 }
