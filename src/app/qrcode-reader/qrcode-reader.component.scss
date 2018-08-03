@@ -1,0 +1,15 @@
+.content, .title {
+  text-align: center;
+}
+
+.video, .qr-code-information {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
