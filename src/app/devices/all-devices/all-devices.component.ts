@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { DevicesService } from '../devices.service';
 
 @Component({
   selector: 'app-all-devices',
   templateUrl: './all-devices.component.html',
-  styleUrls: ['./all-devices.component.scss']
+  styleUrls: ['./all-devices.component.scss'],
 })
 export class AllDevicesComponent implements OnInit {
 
-  constructor() { }
+  devices: any[] = [];
+
+
+  constructor(private devicesService: DevicesService) { }
 
   ngOnInit() {
+    this.devicesService.getDevices().subscribe((items) => {
+      this.devices = items;
+    });
   }
 
+  onSearchChange(searchValue: string) {
+    this.devicesService.getDevicesFiltered(searchValue).subscribe((items) => {
+      this.devices = items;
+    });
+  }
 }
