@@ -9,15 +9,15 @@ import { AuthService } from '../core/auth.service';
 export class DevicesService {
 
 
-    constructor(private http: HttpClient, private authService: AuthService) {
+    constructor(private http: HttpClient) {
 
     }
     getDevices(): Observable<Array<any>> {
         return this.http.get<Array<any>>('api/devices');
     }
 
-    getDevicesFiltered(device): Observable<Array<any>> {
+    getDevicesFiltered(device): Observable<any> {
         const params = new HttpParams().set('search', device);
-        return this.http.get<Array<any>>('api/devices', { params: params });
+        return this.http.get('api/devices', { params: params });
     }
 }
