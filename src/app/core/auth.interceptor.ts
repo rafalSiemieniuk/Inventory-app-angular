@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  basicUrl = 'http://185.238.72.22:3400';
+  basicUrl = 'https://185.238.72.22:5000';
 
   constructor(private authService: AuthService, private router: Router) { }
 
