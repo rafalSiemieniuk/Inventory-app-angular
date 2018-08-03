@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
 import jsQR from 'jsqr';
@@ -8,7 +8,7 @@ import jsQR from 'jsqr';
   templateUrl: './qrcode-reader.component.html',
   styleUrls: ['./qrcode-reader.component.scss']
 })
-export class QrcodeReaderComponent implements OnInit {
+export class QrcodeReaderComponent implements OnInit, OnDestroy {
 
   @Output() callback: EventEmitter<any> = new EventEmitter();
   @ViewChild('canvasEl') canvasEl: ElementRef;
@@ -16,34 +16,57 @@ export class QrcodeReaderComponent implements OnInit {
 
   video = document.createElement('video');
 
-  outputData = 'No detected.';
+  outputData = 'No detected';
   loadingMessage = 'Loading video...';
-  noCameraPermissionClass = false;
-  siteLoadedClass = false;
-  isLoadingSiteClass = true;
+
+  cameraPermission = true;
+  siteLoaded = false;
+  twoCameras = false;
 
   qrCode: string = null;
   tickBind;
+  cameraMode: Array<string> = ['environment', 'user'];
 
   constructor() { }
 
   ngOnInit() {
+    this.detectionNumberCameras();
     this.context = (<HTMLCanvasElement>this.canvasEl.nativeElement).getContext('2d');
     this.tickBind = this.tick.bind(this);
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }).then((stream) => {
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: this.cameraMode[0] } }).then((stream) => {
       this.video.srcObject = stream;
       this.video.play();
       requestAnimationFrame(this.tickBind);
     }).catch((error) => {
-      this.noCameraPermissionClass = true;
+      this.cameraPermission = false;
       this.loadingMessage = 'Unable to access video stream (please make sure you have a webcam enabled)';
     });
+
+  }
+
+  ngOnDestroy() {
+    for (const track of this.video.srcObject.getTracks()) {
+      track.stop();
+    }
+  }
+
+  detectionNumberCameras() {
+    navigator.mediaDevices.enumerateDevices()
+      .then(devices => {
+        const numberCameras = devices.filter((device) => device.kind === 'videoinput');
+        if (numberCameras.length > 1) {
+          this.twoCameras = true;
+        }
+      });
+  }
+
+  switch() {
+    this.cameraMode.reverse();
   }
 
   tick() {
     if (this.video.readyState === this.video.HAVE_ENOUGH_DATA) {
-      this.siteLoadedClass = true;
-      this.isLoadingSiteClass = false;
+      this.siteLoaded = true;
       this.canvasEl.nativeElement.height = this.video.videoHeight;
       this.canvasEl.nativeElement.width = this.video.videoWidth;
       this.context.drawImage(this.video, 0, 0, this.canvasEl.nativeElement.width, this.canvasEl.nativeElement.height);

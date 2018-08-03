@@ -2,12 +2,22 @@
   <div class="background"></div>
   <div class="content">
     <ons-card class="card">
-      <div class="title" [ngClass]="{ 'hidden': noCameraPermissionClass }">
-        Scan your device's QR code
+      <ons-list>
+        <ons-list-item class="switch" [ngClass]="{ 'hidden': !twoCameras }">
+          <div class="center">
+            Front camera
+          </div>
+          <div class="right">
+            <ons-switch checked (change)="switch()"></ons-switch>
+          </div>
+        </ons-list-item>
+      </ons-list>
+      <div class="title" [ngClass]="{ 'hidden': !cameraPermission }">
+        Scan QR code
       </div>
-      <div class="qr-code-information" [ngClass]="{ 'hidden': siteLoadedClass }">{{loadingMessage}}</div>
-      <canvas #canvasEl class="video" [ngClass]="{ 'hidden': isLoadingSiteClass }"></canvas>
-      <div class="qr-code-information" [ngClass]="{ 'hidden': isLoadingSiteClass }">
+      <div class="qr-code-information" [ngClass]="{ 'hidden': siteLoaded }">{{loadingMessage}}</div>
+      <canvas #canvasEl class="video" [ngClass]="{ 'hidden': !siteLoaded }"></canvas>
+      <div class="qr-code-information" [ngClass]="{ 'hidden': !siteLoaded }">
         <p *ngIf="outputData">
           <b>Your QR code: </b>{{outputData}}</p>
       </div>
