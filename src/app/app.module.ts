@@ -12,7 +12,7 @@ import { MenuComponent } from './menu/menu/menu.component';
 import { MenuService } from './menu/menu.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
-import { AuthenticationGuard } from './authentication.guard';
+import { AuthenticationGuard } from './core/authentication.guard';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -20,7 +20,6 @@ import { AuthService } from './core/auth.service';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
-import { QrcodeWriterComponent } from './qrcode-writer/qrcode-writer.component';
 import { AdminGuard } from './admin.guard';
 
 
@@ -35,7 +34,7 @@ import { AdminGuard } from './admin.guard';
     LoginComponent,
   ],
   exports: [
-    OnsenModule,
+    OnsenModule
   ],
   imports: [
     BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule,
