@@ -19,8 +19,7 @@ export class QrcodeReaderComponent implements OnInit, OnDestroy {
   outputData = 'No detected';
   loadingMessage = 'Loading video...';
 
-  cameraPermission = true;
-  siteLoaded = false;
+  videoLoaded = false;
   twoCameras = false;
 
   qrCode: string = null;
@@ -33,21 +32,11 @@ export class QrcodeReaderComponent implements OnInit, OnDestroy {
     this.detectionNumberCameras();
     this.context = (<HTMLCanvasElement>this.canvasEl.nativeElement).getContext('2d');
     this.tickBind = this.tick.bind(this);
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: this.cameraMode[0] } }).then((stream) => {
-      this.video.srcObject = stream;
-      this.video.play();
-      requestAnimationFrame(this.tickBind);
-    }).catch((error) => {
-      this.cameraPermission = false;
-      this.loadingMessage = 'Unable to access video stream (please make sure you have a webcam enabled)';
-    });
-
+    this.startCamera();
   }
 
   ngOnDestroy() {
-    for (const track of this.video.srcObject.getTracks()) {
-      track.stop();
-    }
+    this.stopCamera();
   }
 
   detectionNumberCameras() {
@@ -61,12 +50,30 @@ export class QrcodeReaderComponent implements OnInit, OnDestroy {
   }
 
   switch() {
+    this.stopCamera();
     this.cameraMode.reverse();
+    this.startCamera();
+  }
+
+  startCamera() {
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: this.cameraMode[0] } }).then((stream) => {
+      this.video.srcObject = stream;
+      this.video.play();
+      requestAnimationFrame(this.tickBind);
+    }).catch((error) => {
+      this.loadingMessage = 'Unable to access video stream (please make sure you have a webcam enabled)';
+    });
+  }
+
+  stopCamera() {
+    for (const track of this.video.srcObject.getTracks()) {
+      track.stop();
+    }
   }
 
   tick() {
     if (this.video.readyState === this.video.HAVE_ENOUGH_DATA) {
-      this.siteLoaded = true;
+      this.videoLoaded = true;
       this.canvasEl.nativeElement.height = this.video.videoHeight;
       this.canvasEl.nativeElement.width = this.video.videoWidth;
       this.context.drawImage(this.video, 0, 0, this.canvasEl.nativeElement.width, this.canvasEl.nativeElement.height);
