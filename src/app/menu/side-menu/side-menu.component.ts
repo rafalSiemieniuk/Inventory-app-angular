@@ -24,14 +24,13 @@ export class SideMenuComponent implements OnInit {
 
 
   ngOnInit() {
-    // const { user } = this.authService;
-    // this.links = routes.filter(item => (item.adminRequred && user.isAdmin ) || !item.adminRequred);
-    // // console.log(this.links);
+
     this.filterAdmin();
   }
   filterAdmin() {
     const { user } = this.authService;
-    this.links = routes.filter(item => (item.adminRequred && false ) || !item.adminRequred);
+    this.links = routes.filter(item => (item.adminRequired && false ) || !item.adminRequired); //<-- zamiast false wstawić user.isAdmin
+    console.log(this.links);
   }
 }
 
