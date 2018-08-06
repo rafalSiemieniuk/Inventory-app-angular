@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ComponentRef,
-  ViewChild,
-  Params,
-  OnsenModule,
-  NgModule,
-  CUSTOM_ELEMENTS_SCHEMA
-} from 'ngx-onsenui';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import * as ons from 'onsenui';
+import { DevicesService } from '../devices.service';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-my-devices',
@@ -17,13 +9,16 @@ import * as ons from 'onsenui';
 })
 export class MyDevicesComponent implements OnInit {
 
-  constructor() { }
+  myDevices: any[] = [];
 
-  ngOnInit() {
+  constructor(private devicesService: DevicesService) {
   }
 
-  showQrCode(code) {
-    alert(code);
+  ngOnInit() {
+    this.devicesService.getMyDevices('872e2dd7-225c-4e3b-8021-21aafd83fc48')
+      .subscribe((items) => {
+        this.myDevices = items;
+      });
   }
 }
 
