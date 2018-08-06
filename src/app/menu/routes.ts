@@ -1,21 +1,22 @@
 export const routes: any[] = [{
-  'name': 'Profile',
-  'router': 'profile'
+  name: 'Profile',
+  router: 'profile'
 }, {
-  'name': 'My Devices',
-  'router': 'devices/mydevices'
+  name: 'My Devices',
+  router: 'devices/mydevices'
 }, {
-  'name': 'All Devices',
-  'router': 'devices/alldevices'
+  name: 'All Devices',
+  router: 'devices/alldevices',
+  adminRequired: true
 }, {
-  'name': 'Employees',
-  'router': 'employees'
+  name: 'Employees',
+  router: 'employees'
 }, {
-  'name': 'Identify',
-  'router': 'identify'
+  name: 'Identify',
+  router: 'identify'
 }, {
-  'name': 'Places',
-  'router': 'places'
+  name: 'Places',
+  router: 'places'
 }
 ];
 
