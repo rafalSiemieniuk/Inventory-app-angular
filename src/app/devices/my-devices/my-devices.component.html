@@ -6,7 +6,7 @@
         <div class="content__wrap">
         </div>
         <ons-list class="ons-list">
-          <ons-list-item class="ons-list__item" tappable *ngFor="let device of myDevices" >
+          <ons-list-item [routerLink]="device.id" class="ons-list__item" tappable *ngFor="let device of myDevices" >
             <span class="list-item__title">{{device.name}}</span><br>
             <span class="list-item__subtitle">{{device.id}}</span>
           </ons-list-item>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -8,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-devices-details.component.scss']
 })
 export class MyDevicesDetailsComponent implements OnInit {
-
-  constructor() { }
+  device: any;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params);
+      this.device = params.details;
+    });
   }
 
 }
