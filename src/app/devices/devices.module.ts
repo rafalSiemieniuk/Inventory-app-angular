@@ -8,9 +8,10 @@ import { AllDevicesComponent } from './all-devices/all-devices.component';
 import { MyDevicesComponent } from './my-devices/my-devices.component';
 import { QrcodeReaderComponent } from '../qrcode-reader/qrcode-reader.component';
 import { DevicesRouting } from './devices.routing';
+import { MyDevicesDetailsComponent } from './my-devices-details/my-devices-details.component';
 
 @NgModule({
-    declarations: [DevicesComponent, AllDevicesComponent, MyDevicesComponent, QrcodeReaderComponent],
+    declarations: [DevicesComponent, AllDevicesComponent, MyDevicesComponent, QrcodeReaderComponent, MyDevicesDetailsComponent],
     imports: [CommonModule, DevicesRouting, FormsModule],
     exports: [DevicesRouting],
     providers: [DevicesService],
