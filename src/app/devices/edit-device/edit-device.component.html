@@ -1,3 +1,22 @@
-<p>
-  edit-device works!
-</p>
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <div class="back">
+      <ons-back-button routerLink="../">Back
+      </ons-back-button>
+    </div>
+    <ons-card>
+      <div class="title">
+        Edit Device Name
+      </div> 
+        <div class="content">
+          <div class="content__input">
+            <ons-input modifier="material" type="text" placeholder="Device Name"  #nameEdit></ons-input>
+          </div>
+          <div class="content__btn">
+            <ons-button (click)="onSubmit()" modifier="large">Edit</ons-button>
+          </div>
+        </div>
+    </ons-card>
+  </div>
+</ons-page>
