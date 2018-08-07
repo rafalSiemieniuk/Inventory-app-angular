@@ -1,7 +1,23 @@
-<div *ngIf="device">
-  <span>{{device.name}}</span>
-  <p>
-    Device ID: {{device.id}}
-  </p>
-  <app-qrcode-writer [code]="device.id" [scaleqr]="10"></app-qrcode-writer>
-</div>
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <div class="back">
+      <ons-back-button routerLink="../">Back
+      </ons-back-button>
+      <ons-list-item class="ons-list__item" *ngIf="device">
+        <span class="list-item__title center">{{device.name}}</span>
+      </ons-list-item>
+    </div>
+    <ons-card>
+      <div class="content" *ngIf="device">
+        <p>
+          Device ID: {{device.id}}
+        </p>
+        <app-qrcode-writer class="center" [code]="device.id" [scaleqr]="9"></app-qrcode-writer>
+        <div class="content__btn">
+          <ons-button (click)="onSubmit()" modifier="large">Transfer</ons-button>
+        </div>
+      </div>
+    </ons-card>
+  </div>
+</ons-page>

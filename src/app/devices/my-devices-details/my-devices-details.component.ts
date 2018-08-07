@@ -23,4 +23,8 @@ export class MyDevicesDetailsComponent implements OnInit {
       this.device = item;
     });
   }
+  onSubmit() {
+
+  }
+
 }
