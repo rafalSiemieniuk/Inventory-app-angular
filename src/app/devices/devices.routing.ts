@@ -20,14 +20,18 @@ const devicesRoutes: Routes = [
                 path: 'mydevices',
                 component: MyDevicesComponent,
             },
+            { path: 'mydevices/:details',
+            canActivate: [AdminGuard],
+            component: DevicesDetailsComponent},
             {
                 path: 'alldevices',
                 canActivate: [AdminGuard],
                 component: AllDevicesComponent,
             },
             {
-                path: ':details',
-                component: DevicesDetailsComponent,
+                path: 'alldevices/:details',
+                canActivate: [AdminGuard],
+                component: DevicesDetailsComponent
             },
             {
                 path: 'alldevices/add',
