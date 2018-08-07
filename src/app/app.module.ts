@@ -35,7 +35,7 @@ import { SharedModule } from './shared/shared.module';
     LoginComponent,
   ],
   exports: [
-    OnsenModule
+    OnsenModule,
   ],
   imports: [
     BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule, SharedModule
