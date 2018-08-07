@@ -34,7 +34,7 @@ import { AdminGuard } from './admin.guard';
     LoginComponent,
   ],
   exports: [
-    OnsenModule
+    OnsenModule,
   ],
   imports: [
     BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule,

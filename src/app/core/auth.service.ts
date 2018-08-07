@@ -3,13 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs-compat/Observable';
 import { Auth } from '../login/login.component';
 import { User } from '../user.interface';
+import { AsyncSubject } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user: User = null;
+  user = new AsyncSubject();
+  userObs: any = null;
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +30,15 @@ export class AuthService {
   }
 
   getCurrentUser(): Observable<User> {
-    return this.http.get<User>('api/users/current');
+    if (!this.userObs) {
+      this.userObs = this.http.get<User>('api/users/current')
+        .do((user) => {
+          this.user.next(user);
+          this.user.complete();
+        },
+        () => this.userObs = null)
+        .pipe(shareReplay());
+    }
+    return this.userObs;
   }
 }

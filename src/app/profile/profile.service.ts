@@ -16,6 +16,6 @@ export class ProfileService {
     }
 
     updateUser(user): Observable<any> {
-        return this.http.put<any>(`api/users/${this.authService.user.id}`, user);
+        return this.http.put<any>(`api/users/${user.id}`, user);
     }
 }
