@@ -21,6 +21,7 @@ import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
 import { AdminGuard } from './admin.guard';
+import {IdentifyModule} from './identify/identify.module';
 import { SharedModule } from './shared/shared.module';
 
 
@@ -38,6 +39,7 @@ import { SharedModule } from './shared/shared.module';
     OnsenModule
   ],
   imports: [
+    BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule, IdentifyModule
     BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule, SharedModule
   ],
   bootstrap: [AppComponent],

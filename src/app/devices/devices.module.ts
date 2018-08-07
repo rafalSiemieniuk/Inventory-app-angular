@@ -11,7 +11,7 @@ import { DevicesRouting } from './devices.routing';
 import { MyDevicesDetailsComponent } from './my-devices-details/my-devices-details.component';
 
 @NgModule({
-    declarations: [DevicesComponent, AllDevicesComponent, MyDevicesComponent, QrcodeReaderComponent, MyDevicesDetailsComponent],
+    declarations: [DevicesComponent, AllDevicesComponent, MyDevicesComponent,  MyDevicesDetailsComponent],
     imports: [CommonModule, DevicesRouting, FormsModule],
     exports: [DevicesRouting],
     providers: [DevicesService],
