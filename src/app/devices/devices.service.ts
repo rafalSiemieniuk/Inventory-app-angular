@@ -11,17 +11,19 @@ export class DevicesService {
     constructor(private http: HttpClient) {
 
     }
-    getDevices(): Observable<Array<any>> {
-        return this.http.get<Array<any>>('api/devices');
+    getDevices(): Observable<any> {
+        return this.http.get('api/devices');
     }
 
-    getDevicesFiltered(device): Observable<any> {
-        const params = new HttpParams().set('search', device);
-        return this.http.get('api/devices', { params: params });
+    getDevicesFiltered(search): Observable<any> {
+        return this.http.get('api/devices', { params: { search } });
     }
 
-    getMyDevices(myId): Observable<any> {
-        const params = new HttpParams().set('belongsToId', myId);
-        return this.http.get('api/devices', { params: params });
+    getMyDevices(belongsToId): Observable<any> {
+        return this.http.get('api/devices', { params: { belongsToId } });
+    }
+
+    getById(id): Observable<any> {
+        return this.http.get(`api/devices/${id}`);
     }
 }

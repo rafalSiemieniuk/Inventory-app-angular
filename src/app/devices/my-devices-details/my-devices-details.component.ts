@@ -1,14 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  ComponentRef,
-  ViewChild,
-  Params,
-  OnsenModule,
-  NgModule,
-  CUSTOM_ELEMENTS_SCHEMA
-} from 'ngx-onsenui';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import * as ons from 'onsenui';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DevicesService } from '../devices.service';
 
 
 @Component({
@@ -17,12 +9,22 @@ import * as ons from 'onsenui';
   styleUrls: ['./my-devices-details.component.scss']
 })
 export class MyDevicesDetailsComponent implements OnInit {
-
-  constructor() { }
+  device = null;
+  constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.getDevice(params.details);
+    });
   }
-  showQrCode(code) {
-    alert(code);
+
+  getDevice(deviceId) {
+    this.devicesService.getById(deviceId).subscribe(item => {
+      this.device = item;
+    });
   }
+  onSubmit() {
+
+  }
+
 }
