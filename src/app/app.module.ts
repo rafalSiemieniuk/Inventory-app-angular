@@ -21,6 +21,7 @@ import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
 import { AdminGuard } from './admin.guard';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -37,7 +38,7 @@ import { AdminGuard } from './admin.guard';
     OnsenModule
   ],
   imports: [
-    BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule,
+    BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule, SharedModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [SideMenuComponent, ContentMenuComponent],
