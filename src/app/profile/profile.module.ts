@@ -1,17 +1,17 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProfileComponent } from './profile.component';
 import { ProfileRouting } from './profile.routing';
-import {QrcodeWriterComponent} from '../qrcode-writer/qrcode-writer.component';
-import {ProfileEditComponent} from './profile-edit/profile-edit.component';
-import {ProfileMyComponent} from './profile-my/profile-my.component';
-import {OnsenModule} from 'ngx-onsenui';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { ProfileMyComponent } from './profile-my/profile-my.component';
+import { OnsenModule } from 'ngx-onsenui';
 import { ProfileService } from './profile.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    declarations: [ProfileComponent, ProfileEditComponent, ProfileMyComponent, QrcodeWriterComponent],
-    imports: [CommonModule, ProfileRouting],
+    declarations: [ProfileComponent, ProfileEditComponent, ProfileMyComponent],
+    imports: [CommonModule, ProfileRouting, SharedModule],
     exports: [ProfileRouting],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [ProfileService],
