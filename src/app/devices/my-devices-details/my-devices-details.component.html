@@ -1,3 +1,7 @@
-<p>
- Device ID: {{device}} 
-</p>
+<div *ngIf="device">
+  <span>{{device.name}}</span>
+  <p>
+    Device ID: {{device.id}}
+  </p>
+  <app-qrcode-writer [code]="device.id" [scaleqr]="10"></app-qrcode-writer>
+</div>
