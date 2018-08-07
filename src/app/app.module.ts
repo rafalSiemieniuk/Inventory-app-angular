@@ -39,11 +39,20 @@ import { SharedModule } from './shared/shared.module';
     OnsenModule
   ],
   imports: [
-    BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule, IdentifyModule
-    BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule, SharedModule
+    BrowserModule,
+    OnsenModule,
+    AppRouting,
+    HttpClientModule,
+    FormsModule,
+    ProfileModule,
+    IdentifyModule,
+    SharedModule
   ],
   bootstrap: [AppComponent],
-  entryComponents: [SideMenuComponent, ContentMenuComponent],
+  entryComponents: [
+    SideMenuComponent,
+    ContentMenuComponent
+  ],
   providers: [
     MenuService,
     AuthenticationGuard,

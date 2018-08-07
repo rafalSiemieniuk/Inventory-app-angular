@@ -18,6 +18,9 @@ const identifyRoutes: Routes = [
         path: 'details',
         component: IdentifyDetailsComponent
       }, {
+        path: 'details/:id',
+        component: IdentifyDetailsComponent
+      }, {
         path: '',
         redirectTo: 'identifyqr',
         pathMatch: 'full'
