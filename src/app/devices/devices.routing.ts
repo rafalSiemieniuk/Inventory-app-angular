@@ -30,6 +30,11 @@ const devicesRoutes: Routes = [
                 component: AllDevicesComponent,
             },
             {
+                path: 'alldevices/:details',
+                canActivate: [AdminGuard],
+                component: DevicesDetailsComponent,
+            },
+            {
                 path: 'alldevices/add',
                 canActivate: [AdminGuard],
                 component: AddDeviceComponent
