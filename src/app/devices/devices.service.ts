@@ -26,4 +26,8 @@ export class DevicesService {
     getById(id): Observable<any> {
         return this.http.get(`api/devices/${id}`);
     }
+
+    addNewDevice(name): Observable<any> {
+        return this.http.post(`api/devices/`, name);
+    }
 }
