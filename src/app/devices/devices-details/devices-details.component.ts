@@ -23,8 +23,4 @@ export class DevicesDetailsComponent implements OnInit {
       this.device = item;
     });
   }
-  onSubmit() {
-
-  }
-
 }

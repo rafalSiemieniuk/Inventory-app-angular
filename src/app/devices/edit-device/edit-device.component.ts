@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DevicesService } from '../devices.service';
 
@@ -8,18 +8,24 @@ import { DevicesService } from '../devices.service';
   styleUrls: ['./edit-device.component.scss']
 })
 export class EditDeviceComponent implements OnInit {
-  params = null;
+  device = <any>{};
 
-  constructor(private route: ActivatedRoute, private deviceService: DevicesService) { }
+  @ViewChild('nameEdit') nameEdit: ElementRef;
+  constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.params = params;
+      this.getDevice(params.details);
+    });
+  }
+  getDevice(deviceId) {
+    this.devicesService.getById(deviceId).subscribe(item => {
+      this.device = item;
     });
   }
 
   onSubmit() {
-
+    this.device.name = this.nameEdit.nativeElement.value;
+    this.devicesService.editDevice(this.device).subscribe();
   }
-
 }

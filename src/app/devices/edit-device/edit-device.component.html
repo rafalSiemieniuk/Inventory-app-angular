@@ -11,7 +11,7 @@
       </div> 
         <div class="content">
           <div class="content__input">
-            <ons-input modifier="material" type="text" placeholder="Device Name"  #nameEdit></ons-input>
+            <ons-input modifier="material" type="text" value="{{device.name}}" placeholder="Device Name"  #nameEdit></ons-input>
           </div>
           <div class="content__btn">
             <ons-button (click)="onSubmit()" modifier="large">Edit</ons-button>

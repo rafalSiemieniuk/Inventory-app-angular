@@ -30,4 +30,8 @@ export class DevicesService {
     addNewDevice(name): Observable<any> {
         return this.http.post(`api/devices/`, name);
     }
+
+    editDevice(device): Observable<any> {
+        return this.http.put<any>(`api/devices/${device.id}`, device);
+    }
 }
