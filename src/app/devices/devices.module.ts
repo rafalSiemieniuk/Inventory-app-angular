@@ -8,7 +8,7 @@ import { AllDevicesComponent } from './all-devices/all-devices.component';
 import { MyDevicesComponent } from './my-devices/my-devices.component';
 import { DevicesRouting } from './devices.routing';
 import { MyDevicesDetailsComponent } from './my-devices-details/my-devices-details.component';
-import {SharedModule} from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [

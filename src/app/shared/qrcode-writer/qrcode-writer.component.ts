@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import QRCode from 'qrcode';
 
 @Component({
@@ -14,7 +14,9 @@ export class QrcodeWriterComponent implements OnInit {
 
   @Input()
   set code(value) {
-    this.generateQR(value);
+    if (value) {
+      this.generateQR(value);
+    }
   }
 
   constructor() { }
