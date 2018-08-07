@@ -10,9 +10,10 @@ import { DevicesRouting } from './devices.routing';
 import { DevicesDetailsComponent } from './devices-details/devices-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { AddDeviceComponent } from './add-device/add-device.component';
+import { EditDeviceComponent } from './edit-device/edit-device.component';
 
 @NgModule({
-    declarations: [DevicesComponent, AllDevicesComponent, MyDevicesComponent, DevicesDetailsComponent, AddDeviceComponent],
+    declarations: [DevicesComponent, AllDevicesComponent, MyDevicesComponent, DevicesDetailsComponent, AddDeviceComponent, EditDeviceComponent],
     imports: [CommonModule, DevicesRouting, FormsModule, SharedModule],
     exports: [DevicesRouting],
     providers: [DevicesService],
