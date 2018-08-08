@@ -4,10 +4,13 @@
     <div class="back">
       <ons-back-button routerLink="../">Back
       </ons-back-button>
-      <ons-list-item class="ons-list__item" *ngIf="device">
-        <span class="list-item__title center">{{device.name}}</span>
-      </ons-list-item>
+      <ons-button modifier="quiet" class="content-right" routerLink="./form">
+        <ons-icon icon="ion-edit" size="10vw"></ons-icon>
+      </ons-button>
     </div>
+      <ons-list-item class="ons-list__item" *ngIf="device">
+        <p class="list-item__title center">{{device.name}}</p>
+      </ons-list-item>
     <ons-card>
       <div class="content" *ngIf="device">
         <p>

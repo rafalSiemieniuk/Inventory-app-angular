@@ -43,7 +43,7 @@ export class MyDevicesIdentifyComponent implements OnInit {
   goSummary() {
     this.checkCurrentUser();
     this.router.navigate([`/devices/mydevices/transfer/summary`]);
-    this.deviceService.changeId().subscribe(post => {
+    this.deviceService.changeId().subscribe(() => {
       ons.notification.toast('Operation successful', { timeout: 2000 });
     });
   }

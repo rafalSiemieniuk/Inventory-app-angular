@@ -1,0 +1,18 @@
+<ons-page *ngIf="place">
+  <ons-card>
+    <ons-list-item>
+      PLACE
+    </ons-list-item>
+    <ons-list-item>
+      <span class="list-item__title">Name</span>
+      <span class="list-item__subtitle">{{place.name}}</span>
+    </ons-list-item>
+    <ons-list-item *ngIf="office">
+      <span class="list-item__title">Office</span>
+      <span class="list-item__subtitle">{{office.name}}</span>
+    </ons-list-item>
+    <ons-list-item modifier="nodivider" class="center">
+      <app-qrcode-writer [code]=place.id></app-qrcode-writer>
+    </ons-list-item>
+  </ons-card>
+</ons-page>

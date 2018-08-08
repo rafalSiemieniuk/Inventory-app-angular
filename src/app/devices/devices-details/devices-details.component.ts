@@ -4,11 +4,11 @@ import { DevicesService } from '../devices.service';
 
 
 @Component({
-  selector: 'app-my-devices-details',
-  templateUrl: './my-devices-details.component.html',
-  styleUrls: ['./my-devices-details.component.scss']
+  selector: 'app-devices-details',
+  templateUrl: './devices-details.component.html',
+  styleUrls: ['./devices-details.component.scss']
 })
-export class MyDevicesDetailsComponent implements OnInit {
+export class DevicesDetailsComponent implements OnInit {
   device = null;
   constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
 
@@ -21,8 +21,6 @@ export class MyDevicesDetailsComponent implements OnInit {
   getDevice(deviceId) {
     this.devicesService.getById(deviceId).subscribe(item => {
       this.device = item;
-      this.devicesService.device = item;
     });
   }
-
 }

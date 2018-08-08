@@ -1,25 +1,13 @@
- <ons-toolbar *ngIf="router.url !== '/login'">
+<ons-toolbar *ngIf="router.url !== '/login'">
   <ons-back-button clss="back" (click)="toggleMenu()" *ngIf="router.url !== '/login'">
   </ons-back-button>
   <div class="center">
-    <img src="../../../assets/logo.png" />
+    <img src="../../../assets/logo.png"/>
   </div>
-  
 </ons-toolbar>
 <ons-list *ngIf="router.url !== '/login'">
-  <ons-list-item *ngFor="let link of links" tappable (click)="toggleMenu()">
+  <ons-list-item  *ngFor="let link of links" tappable (click)="toggleMenu()">
     <a  class="center" [routerLink]="link.router">{{link.name}}</a>
   </ons-list-item>
 </ons-list>
 
-<div class="background">
-
-</div>
-<div class="content">
-  <!--<ons-toolbar>-->
-  <!--<div class="center">Left Page</div>-->
-  <!--</ons-toolbar>-->
-  <!--<ons-toolbar>-->
-  <!--<div class="center">Left Page</div>-->
-  <!--</ons-toolbar>-->
-</div>

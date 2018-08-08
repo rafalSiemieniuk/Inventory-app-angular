@@ -4,7 +4,6 @@ import { MenuService } from '../menu.service';
 import { routes } from '../routes';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../core/auth.service';
-import { shareReplay } from 'rxjs/operators';
 
 
 @Component({
@@ -14,21 +13,25 @@ import { shareReplay } from 'rxjs/operators';
 })
 export class SideMenuComponent implements OnInit {
 
-  links = routes;
-  user = null;
-  subscription: Subscription;
+  links = null;
+
   constructor(private router: Router, private menuService: MenuService, private authService: AuthService) {
-    this.subscription = this.authService.getCurrentUser().subscribe(user => { this.user = user; });
   }
+
   toggleMenu() {
     this.menuService.toggle();
   }
 
 
   ngOnInit() {
-    // console.warn('this.user = ', this.user);
+    this.authService.user.subscribe(user => {
+      this.filterByAdmin(user);
+    });
+  }
+
+  filterByAdmin(user) {
+    this.links = routes.filter(item => (item.adminRequired && user.isAdmin) || !item.adminRequired);
   }
 }
-
 
 
