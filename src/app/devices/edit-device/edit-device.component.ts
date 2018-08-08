@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DevicesService } from '../devices.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -12,7 +12,6 @@ export class EditDeviceComponent implements OnInit {
   device = <any>{};
 
 
-  @ViewChild('nameEdit') nameEdit: ElementRef;
   constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
   editForm = new FormGroup({
     edit: new FormControl()
@@ -32,7 +31,9 @@ export class EditDeviceComponent implements OnInit {
   }
 
   onSubmit() {
-    this.device.name = this.nameEdit.nativeElement.value;
-    this.devicesService.editDevice(this.device).subscribe();
+
+    // this.devicesService.editDevice(this.device.value).subscribe();
+
+    console.log(this.editForm.value);
   }
 }

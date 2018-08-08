@@ -12,7 +12,7 @@
       <form [formGroup]="editForm">
         <div class="content">
           <div class="content__input">
-            <ons-input modifier="material" id="reactive-name" formControlName="edit" type="text" value="{{device.name}}" placeholder="Device Name"  #nameEdit ngDefaultControl></ons-input>
+            <ons-input modifier="material" id="reactive-name" formControlName="edit" type="text" value="{{device.name}}" placeholder="Device Name" ngDefaultControl></ons-input>
           </div>
           <div class="content__btn">
             <ons-button (click)="onSubmit()" modifier="large">Edit</ons-button>
