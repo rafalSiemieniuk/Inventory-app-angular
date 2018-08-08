@@ -1,0 +1,22 @@
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <ons-card>
+      <div class="content">
+        <div class="content__wrap">
+        </div>
+        <ons-list class="ons-list">
+          <ons-list-item class="ons-list__item" tappable *ngFor="let employee of employees">
+            <div class="left">
+              <img class="list-item__thumbnail" [src]="employee.avatar">
+            </div>
+            <div class="center">
+              <span class="list-item__title">{{employee.firstName}}</span>
+              <span class="list-item__title">{{employee.lastName}}</span>
+            </div>
+          </ons-list-item>
+        </ons-list>
+      </div>
+    </ons-card>
+  </div>
+</ons-page>

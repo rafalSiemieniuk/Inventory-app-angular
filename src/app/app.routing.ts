@@ -24,6 +24,11 @@ const appRoutes: Routes = [
         loadChildren: './identify/identify.module#IdentifyModule'
     },
     {
+        path: 'employees',
+        canActivate: [AuthenticationGuard],
+        loadChildren: './employees/employees.module#EmployeesModule'
+    },
+    {
         path: 'login',
         component: LoginComponent
     },

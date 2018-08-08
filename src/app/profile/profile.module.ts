@@ -5,7 +5,6 @@ import { ProfileComponent } from './profile.component';
 import { ProfileRouting } from './profile.routing';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { ProfileMyComponent } from './profile-my/profile-my.component';
-import { OnsenModule } from 'ngx-onsenui';
 import { ProfileService } from './profile.service';
 import { SharedModule } from '../shared/shared.module';
 
