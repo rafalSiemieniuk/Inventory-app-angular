@@ -33,10 +33,6 @@ export class DevicesService {
     return this.http.get(`api/identify/${id}`);
   }
 
-  getIdentifyObject(id): Observable<any> {
-    return this.http.get(`api/identify/${id}`);
-  }
-
   getById(id): Observable<any> {
     return this.http.get(`api/devices/${id}`);
   }
@@ -50,8 +46,6 @@ export class DevicesService {
   }
 
   changeId() {
-    console.log(this.device.id);
-    console.warn(this.newObject.id);
     return this.http.patch(`api/devices/${this.device.id}`, {
       belongsToId: this.newObject.id
     });

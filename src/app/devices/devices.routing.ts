@@ -23,16 +23,16 @@ const devicesRoutes: Routes = [
                 component: MyDevicesComponent,
             },
             {
-              path: 'mydevices/transfer',
-              component: MyDevicesIdentifyComponent
-            },
-            {
-                path: 'mydevices/transfer/summary',
-                component: MyDevicesSummaryComponent
-            },
-            {
                 path: 'mydevices/:details',
-                component: DevicesDetailsComponent
+                component: DevicesDetailsComponent,
+            },
+            {
+                path: 'mydevices/:details/transfer',
+                component: MyDevicesIdentifyComponent
+            },
+            {
+                path: 'mydevices/:details/transfer/summary',
+                component: MyDevicesSummaryComponent
             },
             {
                 path: 'mydevices/:details/form',

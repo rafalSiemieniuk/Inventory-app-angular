@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DevicesService } from '../devices.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import * as ons from 'onsenui';
 import { AuthService } from '../../core/auth.service';
 
@@ -16,15 +16,23 @@ export class MyDevicesIdentifyComponent implements OnInit {
   constructor(
     private deviceService: DevicesService,
     private router: Router,
+    private route: ActivatedRoute,
     private authService: AuthService) { }
 
   ngOnInit() {
+    const { details } = this.route.snapshot.params;
+    if (!this.deviceService.device) {
+      this.deviceService.getById(details).subscribe((item) => {
+        this.deviceService.device = item;
+      });
+    }
   }
+
 
   detectQRcode(code) {
     if (!this.deviceService.QRcodeId) {
       this.deviceService.QRcodeId = code;
-      this.deviceService.getIdentifyObject(code).subscribe(object => {
+      this.deviceService.geByIdObject(code).subscribe(object => {
         this.deviceService.newObject = object[object.objectType];
         if (object.user) {
           this.objectName = `${object.user.firstName} ${object.user.lastName}`;
@@ -42,7 +50,7 @@ export class MyDevicesIdentifyComponent implements OnInit {
 
   goSummary() {
     this.checkCurrentUser();
-    this.router.navigate([`/devices/mydevices/transfer/summary`]);
+    this.router.navigate([`/devices/mydevices/${this.deviceService.device.id}/transfer/summary`]);
     this.deviceService.changeId().subscribe(() => {
       ons.notification.toast('Operation successful', { timeout: 2000 });
     });
@@ -52,7 +60,7 @@ export class MyDevicesIdentifyComponent implements OnInit {
     this.authService.user.subscribe(user => {
       const idOldObject = this.deviceService.device.belongsToId;
       if (idOldObject !== user['id']) {
-        this.deviceService.getIdentifyObject(idOldObject).subscribe(object => {
+        this.deviceService.geByIdObject(idOldObject).subscribe(object => {
           this.deviceService.oldObject = object[object.objectType];
         });
       } else {

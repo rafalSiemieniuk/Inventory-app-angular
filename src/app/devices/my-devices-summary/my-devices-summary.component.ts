@@ -27,7 +27,7 @@ export class MyDevicesSummaryComponent implements OnInit {
   }
 
   checkDevice() {
-    if (!this.device) {
+    if (!this.deviceService.QRcodeId) {
       this.router.navigate([`/devices/mydevices`]);
     }
   }
