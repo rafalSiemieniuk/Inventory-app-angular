@@ -16,14 +16,13 @@ export class MyDevicesSummaryComponent implements OnInit {
 
   constructor(
     private deviceService: DevicesService,
-    private router: Router) {
-    this.device = this.deviceService.device;
-    this.oldObject = this.deviceService.oldObject;
-    this.newObject = this.deviceService.newObject;
-  }
+    private router: Router) { }
 
   ngOnInit() {
     this.checkDevice();
+    this.deviceService.QRcodeId = null;
+    this.device = this.deviceService.device;
+    this.newObject = this.deviceService.newObject;
   }
 
   checkDevice() {

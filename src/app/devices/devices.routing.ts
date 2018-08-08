@@ -15,6 +15,14 @@ import { MyDevicesSummaryComponent } from './my-devices-summary/my-devices-summa
 
 const devicesRoutes: Routes = [
     {
+        path: 'transfer/:details',
+        component: MyDevicesIdentifyComponent
+    },
+    {
+        path: 'transfer/:details/summary',
+        component: MyDevicesSummaryComponent
+    },
+    {
         path: '',
         component: DevicesComponent,
         children: [
@@ -25,14 +33,6 @@ const devicesRoutes: Routes = [
             {
                 path: 'mydevices/:details',
                 component: DevicesDetailsComponent,
-            },
-            {
-                path: 'mydevices/:details/transfer',
-                component: MyDevicesIdentifyComponent
-            },
-            {
-                path: 'mydevices/:details/transfer/summary',
-                component: MyDevicesSummaryComponent
             },
             {
                 path: 'mydevices/:details/form',
