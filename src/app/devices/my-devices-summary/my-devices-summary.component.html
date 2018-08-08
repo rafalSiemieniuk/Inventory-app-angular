@@ -1,0 +1,45 @@
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <!-- <div class="back">
+      <ons-back-button routerLink="../../">Back
+      </ons-back-button>
+    </div> -->
+    <ons-card>
+      <ons-list class="container" *ngIf="device">
+        <ons-list-header>
+          <h2 class="center">Device:</h2>
+        </ons-list-header>
+        <ons-list-item class="center">
+          <img class="image" src={{device.imageUrl}} alt="device image">
+        </ons-list-item>
+        <ons-list-item>{{device.name}}</ons-list-item>
+
+        <ons-list-item expandable>
+          Description:
+          <div class="expandable-content">{{device.description}}</div>
+        </ons-list-item>
+
+        <ons-list-header>
+          <h3 class="center">To:</h3>
+        </ons-list-header>
+
+        <div *ngIf="!newObject.name">
+          <ons-list-item class="center">
+            <img class="image" src={{newObject.avatar}} alt="user avatar">
+          </ons-list-item>
+          <ons-list-item>{{newObject.firstName}} {{newObject.lastName}}</ons-list-item>
+          <ons-list-item>{{newObject.email}}</ons-list-item>
+        </div>
+
+        <div *ngIf="newObject.name">
+          <ons-list-item>{{newObject.name}}</ons-list-item>
+        </div>
+      </ons-list>
+    </ons-card>
+  </div>
+</ons-page>
+<ons-bottom-toolbar>
+  <ons-back-button routerLink="../../">Back
+  </ons-back-button>
+</ons-bottom-toolbar>

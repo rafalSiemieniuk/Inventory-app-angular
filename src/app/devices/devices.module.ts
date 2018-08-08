@@ -9,9 +9,11 @@ import { MyDevicesComponent } from './my-devices/my-devices.component';
 import { DevicesRouting } from './devices.routing';
 import { MyDevicesDetailsComponent } from './my-devices-details/my-devices-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { MyDevicesIdentifyComponent } from './my-devices-identify/my-devices-identify.component';
+import { MyDevicesSummaryComponent } from './my-devices-summary/my-devices-summary.component';
 
 @NgModule({
-    declarations: [DevicesComponent, AllDevicesComponent, MyDevicesComponent, MyDevicesDetailsComponent],
+    declarations: [DevicesComponent, AllDevicesComponent, MyDevicesComponent, MyDevicesDetailsComponent, MyDevicesIdentifyComponent, MyDevicesSummaryComponent],
     imports: [CommonModule, DevicesRouting, FormsModule, SharedModule],
     exports: [DevicesRouting],
     providers: [DevicesService],

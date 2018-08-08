@@ -7,33 +7,43 @@ import { AdminGuard } from '../admin.guard';
 import { AllDevicesComponent } from './all-devices/all-devices.component';
 import { MyDevicesComponent } from './my-devices/my-devices.component';
 import { MyDevicesDetailsComponent } from './my-devices-details/my-devices-details.component';
+import { MyDevicesIdentifyComponent } from './my-devices-identify/my-devices-identify.component';
+import { MyDevicesSummaryComponent } from './my-devices-summary/my-devices-summary.component';
 
 
 
 const devicesRoutes: Routes = [
-    {
-        path: '',
-        component: DevicesComponent,
-        children: [
-            {
-                path: 'mydevices',
-                component: MyDevicesComponent,
-            },
-            {
-                path: 'mydevices/:details',
-                component: MyDevicesDetailsComponent
-            },
-            {
-                path: 'alldevices',
-                canActivate: [AdminGuard],
-                component: AllDevicesComponent,
-            }
-        ]
-    }];
+  {
+    path: '',
+    component: DevicesComponent,
+    children: [
+      {
+        path: 'mydevices',
+        component: MyDevicesComponent,
+      },
+      {
+        path: 'mydevices/transfer',
+        component: MyDevicesIdentifyComponent
+      },
+      {
+          path: 'mydevices/transfer/summary',
+          component: MyDevicesSummaryComponent
+      },
+      {
+        path: 'mydevices/:details',
+        component: MyDevicesDetailsComponent
+      },
+      {
+        path: 'alldevices',
+        canActivate: [AdminGuard],
+        component: AllDevicesComponent,
+      }
+    ]
+  }];
 
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(devicesRoutes)],
-    exports: [RouterModule]
+  imports: [CommonModule, RouterModule.forChild(devicesRoutes)],
+  exports: [RouterModule]
 })
 export class DevicesRouting { }

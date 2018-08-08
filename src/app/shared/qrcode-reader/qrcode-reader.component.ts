@@ -16,7 +16,6 @@ export class QrcodeReaderComponent implements OnInit, OnDestroy {
 
   video = document.createElement('video');
 
-  outputData = 'No detected';
   loadingMessage = 'Loading video...';
 
   videoLoaded = false;
@@ -85,7 +84,6 @@ export class QrcodeReaderComponent implements OnInit, OnDestroy {
         this.drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, '#FF3B58');
         this.drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#FF3B58');
         if (code.data) {
-          this.outputData = code.data;
           this.callback.emit(code.data);
         }
       }

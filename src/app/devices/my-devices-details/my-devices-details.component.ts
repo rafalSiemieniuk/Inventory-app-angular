@@ -21,10 +21,8 @@ export class MyDevicesDetailsComponent implements OnInit {
   getDevice(deviceId) {
     this.devicesService.getById(deviceId).subscribe(item => {
       this.device = item;
+      this.devicesService.device = item;
     });
-  }
-  onSubmit() {
-
   }
 
 }
