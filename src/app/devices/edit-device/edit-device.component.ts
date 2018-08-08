@@ -28,7 +28,6 @@ export class EditDeviceComponent implements OnInit {
   }
   getDevice(deviceId) {
     this.devicesService.getById(deviceId).subscribe(item => {
-      this.device = item;
       this.editForm.setValue(item);
     });
   }
