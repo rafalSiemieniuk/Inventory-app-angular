@@ -10,14 +10,23 @@ import { AuthService } from '../../core/auth.service';
 export class MyDevicesComponent implements OnInit {
 
   myDevices: any[] = [];
-
-  constructor(private devicesService: DevicesService) {
+  user;
+  constructor(private devicesService: DevicesService, private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.devicesService.getMyDevices('872e2dd7-225c-4e3b-8021-21aafd83fc48')
-      .subscribe((items) => {
-        this.myDevices = items;
+    this.authService.user.subscribe((user) => {
+      this.user = user;
+      this.getDevices(user);
+    });
+
+
+  }
+
+  getDevices(user) {
+    this.devicesService.getMyDevices(user.id)
+      .subscribe(device => {
+        this.myDevices = device;
       });
   }
 }
