@@ -21,7 +21,12 @@ import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
 import { AdminGuard } from './admin.guard';
+import {IdentifyModule} from './identify/identify.module';
 import { SharedModule } from './shared/shared.module';
+import { IdentifyDetailDeviceComponent } from './identify/identify-details/identify-detail-device/identify-detail-device.component';
+import { IdentifyDetailEmployeeComponent } from './identify/identify-details/identify-detail-employee/identify-detail-employee.component';
+import { IdentifyDetailOfficeComponent } from './identify/identify-details/identify-detail-office/identify-detail-office.component';
+import { IdentifyDetailPlaceComponent } from './identify/identify-details/identify-detail-place/identify-detail-place.component';
 
 
 
@@ -38,10 +43,20 @@ import { SharedModule } from './shared/shared.module';
     OnsenModule,
   ],
   imports: [
-    BrowserModule, OnsenModule, AppRouting, HttpClientModule, FormsModule, ProfileModule, SharedModule
+    BrowserModule,
+    OnsenModule,
+    AppRouting,
+    HttpClientModule,
+    FormsModule,
+    ProfileModule,
+    IdentifyModule,
+    SharedModule
   ],
   bootstrap: [AppComponent],
-  entryComponents: [SideMenuComponent, ContentMenuComponent],
+  entryComponents: [
+    SideMenuComponent,
+    ContentMenuComponent
+  ],
   providers: [
     MenuService,
     AuthenticationGuard,

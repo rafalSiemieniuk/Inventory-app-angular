@@ -8,7 +8,6 @@ import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
-
     {
         path: 'profile',
         canActivate: [AuthenticationGuard],
@@ -18,6 +17,11 @@ const appRoutes: Routes = [
         path: 'devices',
         canActivate: [AuthenticationGuard],
         loadChildren: './devices/devices.module#DevicesModule'
+    },
+    {
+        path: 'identify',
+        canActivate: [AuthenticationGuard],
+        loadChildren: './identify/identify.module#IdentifyModule'
     },
     {
         path: 'login',
