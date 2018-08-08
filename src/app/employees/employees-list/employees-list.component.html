@@ -1,3 +1,17 @@
-<p>
-  employees-list works!
-</p>
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <ons-card>
+      <div class="content">
+        <div class="content__wrap">
+        </div>
+        <ons-list class="ons-list">
+          <ons-list-item class="ons-list__item" tappable *ngFor="let employee of employees" >
+            <span class="list-item__title">{{employee.firstName}}</span><br>
+            <span class="list-item__subtitle">{{employee.lastName}}</span>
+          </ons-list-item>
+        </ons-list>
+      </div>
+    </ons-card>
+  </div>
+</ons-page>
