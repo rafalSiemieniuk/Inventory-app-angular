@@ -9,14 +9,16 @@
       <div class="title">
         Edit Device Name
       </div> 
+      <form [formGroup]="editForm">
         <div class="content">
           <div class="content__input">
-            <ons-input modifier="material" type="text" value="{{device.name}}" placeholder="Device Name"  #nameEdit></ons-input>
+            <ons-input modifier="material" id="reactive-name" formControlName="edit" type="text" value="{{device.name}}" placeholder="Device Name"  #nameEdit ngDefaultControl></ons-input>
           </div>
           <div class="content__btn">
             <ons-button (click)="onSubmit()" modifier="large">Edit</ons-button>
           </div>
         </div>
+      </form>
     </ons-card>
   </div>
 </ons-page>

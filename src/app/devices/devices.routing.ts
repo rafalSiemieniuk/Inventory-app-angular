@@ -23,11 +23,10 @@ const devicesRoutes: Routes = [
             },
             {
                 path: 'mydevices/:details',
-                canActivate: [AdminGuard],
                 component: DevicesDetailsComponent
             },
             {
-                path: 'mydevices/:details/edit',
+                path: 'mydevices/:details/form',
                 canActivate: [AdminGuard],
                 component: EditDeviceComponent
             },
@@ -47,11 +46,11 @@ const devicesRoutes: Routes = [
                 component: DevicesDetailsComponent
             },
             {
-                path: 'alldevices/:details/edit',
+                path: 'alldevices/:details/form',
                 canActivate: [AdminGuard],
                 component: EditDeviceComponent
             },
-            
+
 
         ]
     }];
