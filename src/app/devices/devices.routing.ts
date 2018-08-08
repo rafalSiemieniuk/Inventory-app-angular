@@ -6,7 +6,8 @@ import { DevicesComponent } from './devices.component';
 import { AdminGuard } from '../admin.guard';
 import { AllDevicesComponent } from './all-devices/all-devices.component';
 import { MyDevicesComponent } from './my-devices/my-devices.component';
-import { MyDevicesDetailsComponent } from './my-devices-details/my-devices-details.component';
+import { DevicesDetailsComponent } from './devices-details/devices-details.component';
+import { EditDeviceComponent } from './edit-device/edit-device.component';
 
 
 
@@ -21,13 +22,30 @@ const devicesRoutes: Routes = [
             },
             {
                 path: 'mydevices/:details',
-                component: MyDevicesDetailsComponent
+                component: DevicesDetailsComponent
+            },
+            {
+                path: 'mydevices/:details/form',
+                canActivate: [AdminGuard],
+                component: EditDeviceComponent
             },
             {
                 path: 'alldevices',
                 canActivate: [AdminGuard],
                 component: AllDevicesComponent,
-            }
+            },
+            {
+                path: 'alldevices/:details',
+                canActivate: [AdminGuard],
+                component: DevicesDetailsComponent
+            },
+            {
+                path: 'alldevices/:details/form',
+                canActivate: [AdminGuard],
+                component: EditDeviceComponent
+            },
+
+
         ]
     }];
 

@@ -26,4 +26,12 @@ export class DevicesService {
     getById(id): Observable<any> {
         return this.http.get(`api/devices/${id}`);
     }
+
+    saveDevice(device): Observable<any> {
+        if (device.id) {
+            return this.http.put(`api/devices/${device.id}`, device);
+        } else {
+            return this.http.post(`api/devices/`, device);
+        }
+    }
 }
