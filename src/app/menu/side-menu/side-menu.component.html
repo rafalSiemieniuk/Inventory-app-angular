@@ -7,7 +7,7 @@
 
 </ons-toolbar>
 <ons-list *ngIf="router.url !== '/login'">
-  <ons-list-item *ngFor="let link of links" tappable (click)="toggleMenu()">
+  <ons-list-item  *ngFor="let link of links" tappable (click)="toggleMenu()">
     <a  class="center" [routerLink]="link.router">{{link.name}}</a>
   </ons-list-item>
 </ons-list>
@@ -16,10 +16,5 @@
 
 </div>
 <div class="content">
-  <!--<ons-toolbar>-->
-  <!--<div class="center">Left Page</div>-->
-  <!--</ons-toolbar>-->
-  <!--<ons-toolbar>-->
-  <!--<div class="center">Left Page</div>-->
-  <!--</ons-toolbar>-->
+
 </div>
