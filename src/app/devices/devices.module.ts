@@ -13,20 +13,19 @@ import { EditDeviceComponent } from './edit-device/edit-device.component';
 
 
 @NgModule({
-        DevicesDetailsComponent, EditDeviceComponent],
   declarations: [
     DevicesComponent,
     AllDevicesComponent,
     MyDevicesComponent,
-    MyDevicesDetailsComponent
+    DevicesDetailsComponent,
+    EditDeviceComponent,
   ],
-  imports: [
-    CommonModule,
-    DevicesRouting,
-    FormsModule,
-    SharedModule
-  ],
-    imports: [CommonModule, DevicesRouting, FormsModule, SharedModule, ReactiveFormsModule],
+    imports: [
+      CommonModule,
+      DevicesRouting,
+      FormsModule,
+      SharedModule,
+      ReactiveFormsModule],
     exports: [DevicesRouting],
     providers: [DevicesService],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
