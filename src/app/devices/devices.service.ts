@@ -27,11 +27,11 @@ export class DevicesService {
         return this.http.get(`api/devices/${id}`);
     }
 
-    addNewDevice(name): Observable<any> {
-        return this.http.post(`api/devices/`, name);
-    }
-
-    editDevice(device): Observable<any> {
-        return this.http.put<any>(`api/devices/${device.id}`, device);
+    saveDevice(device): Observable<any> {
+        if (device.id) {
+            return this.http.put(`api/devices/${device.id}`, device);
+        } else {
+            return this.http.post(`api/devices/`, device);
+        }
     }
 }

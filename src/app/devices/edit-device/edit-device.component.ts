@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DevicesService } from '../devices.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -14,26 +14,31 @@ export class EditDeviceComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
   editForm = new FormGroup({
-    edit: new FormControl()
+    id: new FormControl(),
+    name: new FormControl(),
+    belongsToId: new FormControl(),
+    imageUrl: new FormControl(),
+    description: new FormControl()
+
   });
   ngOnInit() {
     const id = this.route.snapshot.params.details;
-    if (id === 'new') {
-      this.device = {};
-    } else {
+    if (id !== 'new') {
       this.getDevice(id);
     }
   }
   getDevice(deviceId) {
     this.devicesService.getById(deviceId).subscribe(item => {
       this.device = item;
+      this.editForm.setValue(item);
     });
   }
 
   onSubmit() {
+    const device = this.editForm.value;
+    // Object.assign({}, this.device, this.editForm.value)
+    this.devicesService.saveDevice(device).subscribe();
 
-    // this.devicesService.editDevice(this.device.value).subscribe();
-
-    console.log(this.editForm.value);
+    console.log(device);
   }
 }
