@@ -26,9 +26,9 @@
       <span class="list-item__title">Office</span>
       <span class="list-item__subtitle">{{ office.name }}</span>
     </ons-list-item>
-    <ons-list-item *ngIf="admin">
+    <ons-list-item>
       <span class="list-item__title">Admin</span>
-      <span class="list-item__subtitle">{{ admin}}</span>
+      <span class="list-item__subtitle">{{employee.isAdmin ? "yes" : "no"}}</span>
     </ons-list-item>
     <ons-list-item modifier="nodivider" class="center">
       <app-qrcode-writer [code]=employee.id></app-qrcode-writer>

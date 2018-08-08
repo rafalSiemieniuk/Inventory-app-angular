@@ -1,0 +1,12 @@
+<ons-page *ngIf="objectType === 'device'">
+  <app-identify-detail-device [value]=object></app-identify-detail-device>
+</ons-page>
+<ons-page *ngIf="objectType === 'user'">
+  <app-identify-detail-employee [value]=object></app-identify-detail-employee>
+</ons-page>
+<ons-page *ngIf="objectType === 'office'">
+  <app-identify-detail-office [value]=object></app-identify-detail-office>
+</ons-page>
+<ons-page *ngIf="objectType === 'place'">
+  <app-identify-detail-place [value]=object></app-identify-detail-place>
+</ons-page>

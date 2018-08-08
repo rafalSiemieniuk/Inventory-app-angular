@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {IdentifyDetailsService} from '../identify-details.service';
 
@@ -11,17 +11,23 @@ export class IdentifyDetailPlaceComponent implements OnInit {
   place;
   office;
 
+  @Input() set value(v) {
+    this.setPlace(v);
+  }
+
   constructor(private route: ActivatedRoute, private service: IdentifyDetailsService) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.service.getPlace(params.id).subscribe(item => {
-          this.place = item;
-          this.service.getOffice(item.officeId).subscribe(office =>
-            this.office = office);
-        }
-      );
-    });
+  }
+
+  setPlace(place) {
+    this.place = place;
+    this.getOffice(place.officeId);
+  }
+
+  getOffice(officeId) {
+    this.service.getOffice(officeId).subscribe(office =>
+      this.office = office);
   }
 }

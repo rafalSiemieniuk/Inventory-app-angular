@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IdentifyDetailsService} from '../identify-details.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -9,31 +9,29 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class IdentifyDetailDeviceComponent implements OnInit {
   device;
-  user;
-  place;
+  owner;
+  ownerType;
+
+  @Input() set value(v) {
+    this.setDevice(v);
+  }
 
   constructor(private route: ActivatedRoute, private service: IdentifyDetailsService) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.service.getDevice(params.id).subscribe(item => (
-          this.device = item,
-            this.checkOwner(item.belongsToId)
-        )
-      );
-    });
   }
 
-  checkOwner(id) {
+  setDevice(device) {
+    this.device = device;
+    this.getOwner(device.belongsToId);
+  }
+
+  getOwner(id) {
     this.service.getObject(id).subscribe(object => {
-        if (object.objectType === 'user') {
-          this.user = object.user;
-        } else {
-          this.place = object.place;
-        }
+        this.owner = object[object.objectType];
+        this.ownerType = object.objectType;
       }
     );
-
   }
 }
