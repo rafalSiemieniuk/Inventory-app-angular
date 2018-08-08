@@ -9,7 +9,6 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./edit-device.component.scss']
 })
 export class EditDeviceComponent implements OnInit {
-  device = <any>{};
 
 
   constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
@@ -36,9 +35,6 @@ export class EditDeviceComponent implements OnInit {
 
   onSubmit() {
     const device = this.editForm.value;
-    // Object.assign({}, this.device, this.editForm.value)
     this.devicesService.saveDevice(device).subscribe();
-
-    console.log(device);
   }
 }
