@@ -14,7 +14,6 @@ import { AuthService } from '../../core/auth.service';
 export class SideMenuComponent implements OnInit {
 
   links = null;
-  user = null;
 
   constructor(private router: Router, private menuService: MenuService, private authService: AuthService) {
   }
@@ -27,7 +26,6 @@ export class SideMenuComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(user => {
       this.filterByAdmin(user);
-      this.user = user;
     });
   }
 
