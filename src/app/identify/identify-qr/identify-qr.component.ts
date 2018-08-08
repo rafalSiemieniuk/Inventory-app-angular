@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-identify-qr',
@@ -6,15 +7,15 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./identify-qr.component.scss']
 })
 export class IdentifyQrComponent implements OnInit {
-  output;
+  private output;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log(this.output);
   }
-  shareQrCode(code){
+  shareQrCode(code) {
     this.output = code;
+    this.router.navigate(['/identify/details/' + this.output]);
   }
 
 }
