@@ -1,0 +1,26 @@
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <div class="back">
+      <ons-back-button routerLink="../">Back
+      </ons-back-button>
+      <ons-button modifier="quiet" class="content-right" routerLink="./form">
+        <ons-icon icon="ion-edit" size="10vw"></ons-icon>
+      </ons-button>
+    </div>
+      <ons-list-item class="ons-list__item" *ngIf="device">
+        <p class="list-item__title center">{{device.name}}</p>
+      </ons-list-item>
+    <ons-card>
+      <div class="content" *ngIf="device">
+        <p>
+          Device ID: {{device.id}}
+        </p>
+        <app-qrcode-writer class="center" [code]="device.id" [scaleqr]="9"></app-qrcode-writer>
+        <div class="content__btn">
+          <ons-button (click)="onSubmit()" modifier="large">Transfer</ons-button>
+        </div>
+      </div>
+    </ons-card>
+  </div>
+</ons-page>

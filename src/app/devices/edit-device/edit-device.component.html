@@ -1,0 +1,28 @@
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <div class="back">
+      <ons-back-button routerLink="../">Back
+      </ons-back-button>
+    </div>
+    <ons-card>
+      <div class="title">
+        Submit Device Properties
+      </div>
+      <form [formGroup]="editForm">
+        <div class="content">
+          <div class="content__input">
+            <ons-input modifier="material" formControlName="name" type="text" placeholder="Device Name" ngDefaultControl></ons-input>
+          </div>
+
+          <div class="content__input">
+            <ons-input modifier="material" formControlName="description" type="text" placeholder="Device Description" ngDefaultControl></ons-input>
+          </div>
+          <div class="content__btn">
+            <ons-button (click)="onSubmit()" modifier="large">Edit</ons-button>
+          </div>
+        </div>
+      </form>
+    </ons-card>
+  </div>
+</ons-page>

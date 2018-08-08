@@ -10,16 +10,22 @@ import {Office} from '../../office.iterface';
 })
 export class ProfileMyComponent implements OnInit {
 
-  scale = 5;
   office: Office;
+  user;
+
+
   constructor(public authService: AuthService, private profileService: ProfileService) { }
   ngOnInit() {
-     this.getOffice();
-  }
-  getOffice() {
-    this.profileService.getOffices().subscribe((item) => {
-        this.office = item.find(office =>
-        office.id === this.authService.user.officeId);
+    this.authService.user.subscribe((user) => {
+      this.user = user;
+      this.getOffice(user);
     });
   }
+  getOffice(user) {
+    this.profileService.getOffices().subscribe((item) => {
+        this.office = item.find(office =>
+        office.id === user.officeId);
+    });
+  }
+
 }

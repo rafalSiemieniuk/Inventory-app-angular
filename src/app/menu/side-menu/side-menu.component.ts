@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuService } from '../menu.service';
 import { routes } from '../routes';
-import {AuthService} from '../../core/auth.service';
-
-
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../core/auth.service';
+import { shareReplay } from 'rxjs/operators';
 
 
 @Component({
@@ -14,9 +14,11 @@ import {AuthService} from '../../core/auth.service';
 })
 export class SideMenuComponent implements OnInit {
 
-  links = [];
-
+  links = routes;
+  user = null;
+  subscription: Subscription;
   constructor(private router: Router, private menuService: MenuService, private authService: AuthService) {
+    this.subscription = this.authService.getCurrentUser().subscribe(user => { this.user = user; });
   }
   toggleMenu() {
     this.menuService.toggle();

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs-compat/Observable';
-import { AuthService } from '../core/auth.service';
 
 
 @Injectable()
@@ -12,12 +11,27 @@ export class DevicesService {
     constructor(private http: HttpClient) {
 
     }
-    getDevices(): Observable<Array<any>> {
-        return this.http.get<Array<any>>('api/devices');
+    getDevices(): Observable<any> {
+        return this.http.get('api/devices');
     }
 
-    getDevicesFiltered(device): Observable<any> {
-        const params = new HttpParams().set('search', device);
-        return this.http.get('api/devices', { params: params });
+    getDevicesFiltered(search): Observable<any> {
+        return this.http.get('api/devices', { params: { search } });
+    }
+
+    getMyDevices(belongsToId): Observable<any> {
+        return this.http.get('api/devices', { params: { belongsToId } });
+    }
+
+    getById(id): Observable<any> {
+        return this.http.get(`api/devices/${id}`);
+    }
+
+    saveDevice(device): Observable<any> {
+        if (device.id) {
+            return this.http.put(`api/devices/${device.id}`, device);
+        } else {
+            return this.http.post(`api/devices/`, device);
+        }
     }
 }
