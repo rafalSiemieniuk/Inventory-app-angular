@@ -3,6 +3,7 @@ import { ProfileService } from '../profile.service';
 import { AuthService } from '../../core/auth.service';
 import { Location } from '@angular/common';
 import * as ons from 'onsenui';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-edit',
@@ -12,7 +13,7 @@ import * as ons from 'onsenui';
 export class ProfileEditComponent implements OnInit {
 
   offices: any[] = [];
-  data = <any>{};
+  data = null;
 
 
   @ViewChild('nameEdit') nameEdit: ElementRef;
@@ -21,6 +22,17 @@ export class ProfileEditComponent implements OnInit {
   constructor(private profileService: ProfileService, private authService: AuthService, private location: Location) {
 
   }
+
+  profileForm = new FormGroup({
+    id: new FormControl(),
+    avatar: new FormControl(),
+    firstName: new FormControl(),
+    lastName: new FormControl(),
+    email: new FormControl(),
+    login: new FormControl(),
+    officeId: new FormControl(),
+    isAdmin: new FormControl(),
+  });
 
 
   ngOnInit() {
@@ -31,8 +43,6 @@ export class ProfileEditComponent implements OnInit {
 
   }
   onSubmit() {
-    this.data = this.authService.user;
-
 
     const filterOffices = this.offices.filter((office) => {
       return office.name === this.officeEdit.nativeElement.value;
