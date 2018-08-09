@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Input} from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
 import jsQR from 'jsqr';
@@ -16,11 +16,11 @@ export class QrcodeReaderComponent implements OnInit, OnDestroy {
 
   video = document.createElement('video');
 
-  outputData = 'No detected';
   loadingMessage = 'Loading video...';
 
   videoLoaded = false;
   twoCameras = false;
+  frame;
 
   qrCode: string = null;
   tickBind;
@@ -59,15 +59,20 @@ export class QrcodeReaderComponent implements OnInit, OnDestroy {
     navigator.mediaDevices.getUserMedia({ video: { facingMode: this.cameraMode[0] } }).then((stream) => {
       this.video.srcObject = stream;
       this.video.play();
-      requestAnimationFrame(this.tickBind);
+      this.frame = requestAnimationFrame(this.tickBind);
     }).catch((error) => {
       this.loadingMessage = 'Unable to access video stream (please make sure you have a webcam enabled)';
     });
   }
 
   stopCamera() {
-    for (const track of this.video.srcObject.getTracks()) {
-      track.stop();
+    if (this.video.srcObject) {
+      for (const track of this.video.srcObject.getTracks()) {
+        track.stop();
+      }
+    }
+    if (this.frame) {
+      cancelAnimationFrame(this.frame);
     }
   }
 
@@ -85,12 +90,11 @@ export class QrcodeReaderComponent implements OnInit, OnDestroy {
         this.drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, '#FF3B58');
         this.drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#FF3B58');
         if (code.data) {
-          this.outputData = code.data;
           this.callback.emit(code.data);
         }
       }
     }
-    requestAnimationFrame(this.tickBind);
+    this.frame = requestAnimationFrame(this.tickBind);
   }
 
   private drawLine(begin, end, color) {

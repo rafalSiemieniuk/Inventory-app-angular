@@ -1,0 +1,12 @@
+.popup {
+  text-align: center;
+
+  &__btn {
+    min-width: 100px;
+    margin: 40px 20px;
+
+    &__cancel {
+      background-color: rgba(130, 130, 130, 0.3);
+    }
+  }
+}

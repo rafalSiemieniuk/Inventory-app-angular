@@ -8,10 +8,20 @@ import { AllDevicesComponent } from './all-devices/all-devices.component';
 import { MyDevicesComponent } from './my-devices/my-devices.component';
 import { DevicesDetailsComponent } from './devices-details/devices-details.component';
 import { EditDeviceComponent } from './edit-device/edit-device.component';
+import { MyDevicesIdentifyComponent } from './my-devices-identify/my-devices-identify.component';
+import { MyDevicesSummaryComponent } from './my-devices-summary/my-devices-summary.component';
 
 
 
 const devicesRoutes: Routes = [
+    {
+        path: 'transfer/:details',
+        component: MyDevicesIdentifyComponent
+    },
+    {
+        path: 'transfer/:details/summary',
+        component: MyDevicesSummaryComponent
+    },
     {
         path: '',
         component: DevicesComponent,
@@ -22,7 +32,7 @@ const devicesRoutes: Routes = [
             },
             {
                 path: 'mydevices/:details',
-                component: DevicesDetailsComponent
+                component: DevicesDetailsComponent,
             },
             {
                 path: 'mydevices/:details/form',
@@ -51,7 +61,7 @@ const devicesRoutes: Routes = [
 
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(devicesRoutes)],
-    exports: [RouterModule]
+  imports: [CommonModule, RouterModule.forChild(devicesRoutes)],
+  exports: [RouterModule]
 })
 export class DevicesRouting { }

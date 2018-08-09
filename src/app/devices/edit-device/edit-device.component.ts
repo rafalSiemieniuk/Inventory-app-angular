@@ -11,6 +11,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class EditDeviceComponent implements OnInit {
 
 
+  backhref = '../../';
+
+
   constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
   editForm = new FormGroup({
     id: new FormControl(),
@@ -24,6 +27,7 @@ export class EditDeviceComponent implements OnInit {
     const id = this.route.snapshot.params.details;
     if (id !== 'new') {
       this.getDevice(id);
+      this.backhref = '../';
     }
   }
   getDevice(deviceId) {
