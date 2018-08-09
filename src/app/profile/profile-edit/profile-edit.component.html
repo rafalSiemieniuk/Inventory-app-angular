@@ -9,18 +9,18 @@
       <div class="title">
         Edit Your Account
       </div>
-      
-        <div class="content">
-          <div class="content__input">
-            <ons-input modifier="material" type="text" placeholder="Name"  #nameEdit></ons-input>
-          </div>
-          <ons-select id="choose-office" id="office" #officeEdit>
-            <option *ngFor="let office of offices">{{office.name}}</option>
-          </ons-select>
-          <div class="content__btn">
-            <ons-button (click)="onSubmit()" modifier="large">Save</ons-button>
-          </div>
+
+      <div class="content">
+        <div class="content__input">
+          <ons-input class="content__input__txt" modifier="material" type="text" placeholder="Name" #nameEdit></ons-input>
         </div>
+        <ons-select id="choose-office" id="office" #officeEdit>
+          <option *ngFor="let office of offices">{{office.name}}</option>
+        </ons-select>
+      </div>
     </ons-card>
   </div>
 </ons-page>
+<ons-bottom-toolbar class="bottom-bar">
+  <ons-button (click)="onSubmit()" modifier="large">Save</ons-button>
+</ons-bottom-toolbar>
