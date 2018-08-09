@@ -1,3 +1,21 @@
-<p>
-  places-details works!
-</p>
+<ons-page *ngIf="place">
+  <ons-toolbar>
+    <div class="left">
+      <ons-back-button routerLink="../"></ons-back-button>
+    </div>
+    <ons-list-item class="center">
+      {{place.name | uppercase}}
+    </ons-list-item>
+  </ons-toolbar>
+
+  <ons-card>
+    <ons-list-item>
+      DEVICES:
+    </ons-list-item>
+    <ons-list *ngFor="let device of devices">
+      <ons-list-item modifier="nodivider" routerLink="/identify/details/{{device.id}}" tappable>
+        {{device.name}}
+      </ons-list-item>
+    </ons-list>
+  </ons-card>
+</ons-page>

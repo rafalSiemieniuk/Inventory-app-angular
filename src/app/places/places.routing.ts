@@ -14,18 +14,19 @@ const placesRoutes: Routes = [
     children: [
       {
         path: 'placeslist',
-        component: PlacesListComponent
+        component: PlacesListComponent,
       }, {
-        path: 'addplace',
-        component: PlacesAddComponent
-      }, {
-        path: 'placedetails',
+        path: 'placeslist/:id',
         component: PlacesDetailsComponent
+      }, {
+        path: 'placeslist/:id/form',
+        component: PlacesAddComponent
       }, {
         path: '',
         redirectTo: 'placeslist',
         pathMatch: 'full'
       }
+
     ]
   }
 ];
