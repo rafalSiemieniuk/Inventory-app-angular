@@ -11,6 +11,9 @@
   <ons-card>
     <ons-list-item>
       DEVICES:
+      <ons-button *ngIf="isAdmin" modifier="quiet" class="content-right " routerLink="./form">
+        <ons-icon icon="ion-edit" size="30px"></ons-icon>
+      </ons-button>
     </ons-list-item>
     <ons-list *ngFor="let device of devices">
       <ons-list-item modifier="nodivider" routerLink="/identify/details/{{device.id}}" tappable>

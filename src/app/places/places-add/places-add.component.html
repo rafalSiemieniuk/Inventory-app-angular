@@ -1,3 +1,34 @@
-<p>
-  places-add works!
-</p>
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <div class="back">
+      <ons-back-button [routerLink]="backhref">Back
+      </ons-back-button>
+    </div>
+    <ons-card class="container">
+      <div class="title">
+        Submit Place Properties
+      </div>
+      <form [formGroup]="editForm">
+        <div class="content">
+
+          <div class="content__input">
+            <ons-input class="content__input__txt" modifier="material" formControlName="name" type="text" placeholder="Place Name" ngDefaultControl></ons-input>
+          </div>
+
+          <div class="content__input">
+            <ons-select formControlName="officeId" ngDefaultControl>
+              <option *ngFor="let office of offices; let i = index" [selected]="i === 0" [value]="office.id">
+                {{ office.name }}
+              </option>
+            </ons-select>
+          </div>
+
+        </div>
+        <ons-bottom-toolbar class="bottom-bar">
+          <ons-button (click)="onSubmit()" modifier="large">Save</ons-button>
+        </ons-bottom-toolbar>
+      </form>
+    </ons-card>
+  </div>
+</ons-page>

@@ -1,10 +1,13 @@
 <ons-page>
-  <ons-card>
+  <ons-card class="wrapper">
     <ons-select (change)="officeList($event.target.value)">
       <option *ngFor="let office of offices" [value]="office.id">
         {{ office.name }}
       </option>
     </ons-select>
+    <ons-button *ngIf="isAdmin" modifier="quiet" class="content-right" routerLink="./new/form">
+      <ons-icon icon="ion-plus" size="35px"></ons-icon>
+    </ons-button>
   </ons-card>
   <ons-card *ngIf="filteredPlaces">
     <ons-list *ngFor="let place of filteredPlaces">

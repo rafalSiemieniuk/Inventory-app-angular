@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PlacesService} from '../places.service';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-places-details',
@@ -11,11 +12,16 @@ export class PlacesDetailsComponent implements OnInit {
 
   place;
   devices;
+  isAdmin: boolean;
 
-  constructor(private route: ActivatedRoute, private placesService: PlacesService) {
+  constructor(
+    private route: ActivatedRoute,
+    private placesService: PlacesService,
+    private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.getAdminIfno();
     this.placesService.getPlace(this.route.snapshot.params.id)
       .subscribe(place => {
         this.place = place;
@@ -29,4 +35,9 @@ export class PlacesDetailsComponent implements OnInit {
     });
   }
 
+  getAdminIfno() {
+    this.authService.user.subscribe(user => {
+      this.isAdmin = user.isAdmin;
+    });
+  }
 }

@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs-compat/Observable';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs-compat/Observable';
 
 
 @Injectable()
@@ -22,5 +22,12 @@ export class PlacesService {
 
   getDevices(): Observable<any> {
     return this.http.get(`api/devices`);
+  }
+  saveDevice(place): Observable<any> {
+    if (place.id) {
+      return this.http.put(`api/places/${place.id}`, place);
+    } else {
+      return this.http.post(`api/places/`, place);
+    }
   }
 }
