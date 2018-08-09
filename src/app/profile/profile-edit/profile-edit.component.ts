@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { AuthService } from '../../core/auth.service';
 import { Location } from '@angular/common';
@@ -14,10 +14,6 @@ export class ProfileEditComponent implements OnInit {
 
   offices: any[] = [];
   data = null;
-
-
-  @ViewChild('nameEdit') nameEdit: ElementRef;
-  @ViewChild('officeEdit') officeEdit: ElementRef;
 
   constructor(private profileService: ProfileService, private authService: AuthService, private location: Location) {
 
