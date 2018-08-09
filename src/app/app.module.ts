@@ -19,11 +19,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './core/auth.service';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { FormsModule } from '@angular/forms';
-import { ProfileModule } from './profile/profile.module';
 import { AdminGuard } from './admin.guard';
 import { IdentifyModule } from './identify/identify.module';
 import { SharedModule } from './shared/shared.module';
-import { PlacesComponent } from './places/places.component';
 
 
 
@@ -35,7 +33,6 @@ import { PlacesComponent } from './places/places.component';
     MenuComponent,
     PageNotFoundComponent,
     LoginComponent,
-    PlacesComponent,
   ],
   exports: [
     OnsenModule,
@@ -46,7 +43,6 @@ import { PlacesComponent } from './places/places.component';
     AppRouting,
     HttpClientModule,
     FormsModule,
-    ProfileModule,
     IdentifyModule,
     SharedModule
   ],

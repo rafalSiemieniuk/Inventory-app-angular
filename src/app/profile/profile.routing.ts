@@ -29,7 +29,10 @@ const profileRoutes: Routes = [
 
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(profileRoutes)],
+    imports: [
+      CommonModule,
+      RouterModule.forChild(profileRoutes)
+    ],
     exports: [RouterModule]
 })
 export class ProfileRouting { }
