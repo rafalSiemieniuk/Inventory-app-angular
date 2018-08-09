@@ -16,10 +16,10 @@
           </div>
 
           <div class="content__input">
-            <ons-input modifier="material" formControlName="description" type="text" placeholder="Device Description" ngDefaultControl></ons-input>
+            <textarea class="textarea" rows="4" modifier="material" formControlName="description" type="text" placeholder="Device Description" ngDefaultControl></textarea>
           </div>
           <div class="content__btn">
-            <ons-button (click)="onSubmit()" modifier="large">Edit</ons-button>
+            <ons-button (click)="onSubmit()" modifier="large">Save</ons-button>
           </div>
         </div>
       </form>
