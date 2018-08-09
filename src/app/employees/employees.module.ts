@@ -6,11 +6,21 @@ import { EmployeesComponent } from './employees.component';
 import { EmployeesRouting } from './employees.routing';
 import { FormsModule } from '@angular/forms';
 import { EmployeesService } from './employees.service';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 
 @NgModule({
-    declarations: [EmployeesListComponent, EmployeesComponent],
-    imports: [CommonModule, SharedModule, EmployeesRouting, FormsModule],
+    declarations: [
+      EmployeesListComponent,
+      EmployeeDetailsComponent,
+      EmployeesComponent
+    ],
+    imports: [
+      CommonModule,
+      SharedModule,
+      EmployeesRouting,
+      FormsModule
+    ],
     exports: [EmployeesRouting],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [EmployeesService],
