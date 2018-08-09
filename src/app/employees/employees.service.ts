@@ -10,4 +10,12 @@ export class EmployeesService {
     getEmployees(): Observable<any> {
         return this.http.get('api/users');
     }
+
+    getEmployee(id): Observable<any> {
+      return this.http.get(`api/users/${id}`);
+    }
+
+    getDevices(): Observable<any> {
+      return this.http.get(`api/devices`);
+    }
 }
