@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild, ViewChildren } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { AuthService } from '../../core/auth.service';
-import { HttpClient } from '@angular/common/http';
-
+import { Location } from '@angular/common';
+import * as ons from 'onsenui';
 
 @Component({
   selector: 'app-profile-edit',
@@ -18,7 +18,7 @@ export class ProfileEditComponent implements OnInit {
   @ViewChild('nameEdit') nameEdit: ElementRef;
   @ViewChild('officeEdit') officeEdit: ElementRef;
 
-  constructor(private profileService: ProfileService, private authService: AuthService, private http: HttpClient) {
+  constructor(private profileService: ProfileService, private authService: AuthService, private location: Location) {
 
   }
 
@@ -44,7 +44,8 @@ export class ProfileEditComponent implements OnInit {
     this.data.officeId = editedOffice.id;
 
     this.profileService.updateUser(this.data).subscribe();
-
+    this.location.back();
+    ons.notification.toast('Submit successful', { timeout: 2000 });
   }
 }
 
