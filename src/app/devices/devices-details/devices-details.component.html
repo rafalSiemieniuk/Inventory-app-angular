@@ -11,7 +11,7 @@
       <ons-list-item class="ons-list__item center" *ngIf="device">
         <div class="center">
         <span class="list-item__title center">{{device.name}}</span>
-        <ons-button modifier="quiet" class="content-right " routerLink="./form">
+        <ons-button *ngIf="user.isAdmin"  modifier="quiet" class="content-right " routerLink="./form">
           <ons-icon icon="ion-edit" size="30px"></ons-icon>
         </ons-button>
       </div>
