@@ -9,7 +9,11 @@ import { ProfileService } from './profile.service';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    declarations: [ProfileComponent, ProfileEditComponent, ProfileMyComponent],
+    declarations: [
+      ProfileComponent,
+      ProfileEditComponent,
+      ProfileMyComponent
+    ],
     imports: [CommonModule, ProfileRouting, SharedModule],
     exports: [ProfileRouting],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

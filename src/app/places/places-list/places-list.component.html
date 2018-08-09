@@ -1,0 +1,19 @@
+<ons-page>
+  <ons-card>
+    <ons-select (change)="officeList($event.target.value)">
+      <option *ngFor="let office of offices" [value]="office.id">
+        {{ office.name }}
+      </option>
+    </ons-select>
+  </ons-card>
+  <ons-card *ngIf="filteredPlaces">
+    <ons-list>
+      <div *ngFor="let place of filteredPlaces">
+        <ons-list__item>
+          <span class="list-item__title">{{place.name}}</span>
+        </ons-list__item>
+      </div>
+    </ons-list>
+  </ons-card>
+
+</ons-page>
