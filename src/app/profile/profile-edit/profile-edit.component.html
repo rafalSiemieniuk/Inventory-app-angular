@@ -12,17 +12,19 @@
       <form [formGroup]="profileForm">
         <div class="content">
           <div class="content__input">
-            <ons-input class="content__input__txt" modifier="material" type="text" placeholder="First Name" formControlName="firstName" ngDefaultControl></ons-input>
+            <ons-input class="content__input__txt" modifier="material" type="text" placeholder="First Name" formControlName="firstName"
+              ngDefaultControl></ons-input>
           </div>
           <div class="content__input">
-            <ons-input class="content__input__txt" modifier="material" type="text" placeholder="Last Name" formControlName="lastName" ngDefaultControl></ons-input>
+            <ons-input class="content__input__txt" modifier="material" type="text" placeholder="Last Name" formControlName="lastName"
+              ngDefaultControl></ons-input>
           </div>
-          <ons-select id="choose-office" id="office" formControlName="officeId" ngDefaultControl>
-            <option *ngFor="let office of offices">{{office.name}}</option>
+          <ons-select id="choose-office" formControlName="officeId" ngDefaultControl>
+            <option *ngFor="let office of offices; let i = index" [selected]="i === 0">{{office.name}}</option>
           </ons-select>
         </div>
         <ons-bottom-toolbar class="bottom-bar">
-          <ons-button (click)="onSubmit()" modifier="large">Save</ons-button>
+          <ons-button  (click)="onSubmit()" modifier="large">Save</ons-button>
         </ons-bottom-toolbar>
       </form>
     </ons-card>

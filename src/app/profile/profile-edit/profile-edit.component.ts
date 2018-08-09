@@ -39,18 +39,20 @@ export class ProfileEditComponent implements OnInit {
     this.profileService.getOffices().subscribe((items) => {
       this.offices = items;
     });
-
+    this.authService.user.subscribe(user => {
+      this.profileForm.setValue(user);
+    });
 
   }
   onSubmit() {
+    this.data = this.profileForm.value;
 
     const filterOffices = this.offices.filter((office) => {
-      return office.name === this.officeEdit.nativeElement.value;
+      return office.name === this.data.officeId;
     });
 
     const editedOffice = filterOffices[0];
 
-    this.data.firstName = this.nameEdit.nativeElement.value;
     this.data.officeId = editedOffice.id;
 
     this.profileService.updateUser(this.data).subscribe();
