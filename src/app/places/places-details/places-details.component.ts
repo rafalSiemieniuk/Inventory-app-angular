@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {PlacesService} from '../places.service';
 
 @Component({
   selector: 'app-places-details',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlacesDetailsComponent implements OnInit {
 
-  constructor() { }
+  place;
+  devices;
+
+  constructor(private route: ActivatedRoute, private placesService: PlacesService) {
+  }
 
   ngOnInit() {
+    this.placesService.getPlace(this.route.snapshot.params.id)
+      .subscribe(place => {
+        this.place = place;
+        this.getDevices(place.id);
+      });
+  }
+
+  getDevices(placeId) {
+    this.placesService.getDevices().subscribe(devices => {
+      this.devices = devices.filter(item => item.belongsToId === placeId);
+    });
   }
 
 }
