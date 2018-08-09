@@ -13,6 +13,9 @@
         </div>
         <ons-list class="ons-list">
           <ons-list-item [routerLink]="device.id" class="ons-list__item" tappable *ngFor="let device of devices">
+            <div class="left">
+              <img class="list-item__thumbnail" [src]="device.imageUrl">
+            </div>
             <span class="list-item__title">{{device.name}}</span>
             <br>
             <span class="list-item__subtitle">{{device.id}}</span>
