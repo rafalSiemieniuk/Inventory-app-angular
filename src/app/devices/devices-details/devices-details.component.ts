@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DevicesService } from '../devices.service';
+import { AuthService } from '../../core/auth.service';
 
 
 @Component({
@@ -10,11 +11,17 @@ import { DevicesService } from '../devices.service';
 })
 export class DevicesDetailsComponent implements OnInit {
   device = null;
-  constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
+  user = null;
+
+  constructor(private route: ActivatedRoute, private devicesService: DevicesService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.getDevice(params.details);
+    });
+    this.authService.user.subscribe(user => {
+      this.user = user;
     });
   }
 

@@ -17,8 +17,6 @@ export class MyDevicesComponent implements OnInit {
     this.authService.user.subscribe((user) => {
       this.getDevices(user);
     });
-
-
   }
 
   getDevices(user) {
