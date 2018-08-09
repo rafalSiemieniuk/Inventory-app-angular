@@ -1,0 +1,21 @@
+<ons-page>
+  <div class="background"></div>
+  <div class="content">
+    <div class="back">
+      <ons-back-button routerLink="/devices/mydevices">Back
+      </ons-back-button>
+    </div>
+    <ons-card>
+      <app-qrcode-reader #qrReader (callback)="modal.show(); detectQRcode($event)" ></app-qrcode-reader>
+    </ons-card>
+  </div>
+</ons-page>
+
+<ons-modal class="popup" #modal>
+  <p class="popup__txt" >
+    <span *ngIf="objectName; else lackQRcode">Scaned {{objectName}}, exchange?</span>
+    <ng-template #lackQRcode>Incorrect code</ng-template>
+    </p>
+  <ons-button class="popup__btn popup__btn__cancel" (click)="removePopup(); modal.hide()">No</ons-button>
+  <ons-button class="popup__btn popup__btn__ok" (click)="goSummary()">Yes</ons-button>
+</ons-modal>

@@ -10,6 +10,8 @@ import { DevicesRouting } from './devices.routing';
 import { DevicesDetailsComponent } from './devices-details/devices-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { EditDeviceComponent } from './edit-device/edit-device.component';
+import { MyDevicesIdentifyComponent } from './my-devices-identify/my-devices-identify.component';
+import { MyDevicesSummaryComponent } from './my-devices-summary/my-devices-summary.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { EditDeviceComponent } from './edit-device/edit-device.component';
     MyDevicesComponent,
     DevicesDetailsComponent,
     EditDeviceComponent,
+    MyDevicesIdentifyComponent,
+    MyDevicesSummaryComponent
   ],
     imports: [
       CommonModule,
