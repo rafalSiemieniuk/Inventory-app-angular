@@ -59,7 +59,7 @@ export class MyDevicesIdentifyComponent implements OnInit {
   checkCurrentUser() {
     this.authService.user.subscribe(user => {
       const idOldObject = this.deviceService.device.belongsToId;
-      if (idOldObject !== user['id']) {
+      if (idOldObject !== user.id) {
         this.deviceService.geByIdObject(idOldObject).subscribe(object => {
           this.deviceService.oldObject = object[object.objectType];
         });

@@ -12,7 +12,7 @@ import { shareReplay } from 'rxjs/operators';
 })
 export class AuthService {
 
-  user = new AsyncSubject();
+  user: AsyncSubject<User> = new AsyncSubject();
   userObs: any = null;
 
   constructor(private http: HttpClient) { }

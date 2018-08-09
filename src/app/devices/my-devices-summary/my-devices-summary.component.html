@@ -3,39 +3,49 @@
   <div class="content">
     <ons-card>
       <ons-list class="container" *ngIf="device">
-        <ons-list-header>
-          <h2 class="center">Device:</h2>
-        </ons-list-header>
-        <ons-list-item class="center">
-          <img class="image" src={{device.imageUrl}} alt="device image">
+
+        <ons-list-item>
+          DEVICE
         </ons-list-item>
-        <ons-list-item>{{device.name}}</ons-list-item>
-
-        <ons-list-item expandable>
-          Description:
-          <div class="expandable-content">{{device.description}}</div>
+        <ons-list-item modifier="nodivider" class="center">
+          <img class="list-item__thumbnail image" src={{device.imageUrl}} alt="device image">
+        </ons-list-item>
+        <ons-list-item>
+          <span class="list-item__title">Name</span>
+          <span class="list-item__subtitle">{{ device.name }}</span>
+        </ons-list-item>
+        <ons-list-item>
+          <span class="list-item__title">Description</span>
+          <span class="list-item__subtitle">{{ device.description }}</span>
         </ons-list-item>
 
-        <ons-list-header>
-          <h3 class="center">To:</h3>
-        </ons-list-header>
-
+        <ons-list-item>
+          TO
+        </ons-list-item>
         <div *ngIf="!newObject.name">
-          <ons-list-item class="center">
-            <img class="image" src={{newObject.avatar}} alt="user avatar">
+          <ons-list-item modifier="nodivider" class=" center">
+            <img class="list-item__thumbnail image" src={{newObject.avatar}} alt="user avatar">
           </ons-list-item>
-          <ons-list-item>{{newObject.firstName}} {{newObject.lastName}}</ons-list-item>
-          <ons-list-item>{{newObject.email}}</ons-list-item>
+          <ons-list-item>
+            <span class="list-item__title">Name</span>
+            <span class="list-item__subtitle">{{newObject.firstName}} {{newObject.lastName}}</span>
+          </ons-list-item>
+          <ons-list-item>
+            <span class="list-item__title">e-mail</span>
+            <span class="list-item__subtitle">{{newObject.email}}</span>
+          </ons-list-item>
         </div>
 
         <div *ngIf="newObject.name">
-          <ons-list-item>{{newObject.name}}</ons-list-item>
+          <ons-list-item>
+            <span class="list-item__title">Name</span>
+            <span class="list-item__subtitle">{{newObject.name}}</span>
+          </ons-list-item>
         </div>
       </ons-list>
     </ons-card>
   </div>
 </ons-page>
-<ons-bottom-toolbar>
-  <ons-back-button routerLink="/devices/mydevices">Back
-  </ons-back-button>
+<ons-bottom-toolbar class="bottom-bar">
+  <ons-button modifier="large" routerLink="/devices/mydevices">Go back to Devices</ons-button>
 </ons-bottom-toolbar>

@@ -6,16 +6,16 @@
         Login to your account
       </div>
       <div class="content">
-        <div class="content__input">
-          <ons-input modifier="material" type="text" placeholder="Username" [(value)]="login"></ons-input>
+        <div class="content__wrap">
+          <ons-input class="content__input" modifier="material" type="text" placeholder="Username" [(value)]="login"></ons-input>
         </div>
-        <div class="content__input">
-          <ons-input modifier="material" type="password" placeholder="Password" [(value)]="password"></ons-input>
-        </div>
-        <div class="content__btn">
-          <ons-button modifier="material" (click)="authorizate()">Login</ons-button>
+        <div class="content__wrap">
+          <ons-input class="content__input" modifier="material" type="password" placeholder="Password" [(value)]="password"></ons-input>
         </div>
       </div>
     </ons-card>
   </div>
 </ons-page>
+<ons-bottom-toolbar class="bottom-bar">
+  <ons-button modifier="large" (click)="authorizate()">Login</ons-button>
+</ons-bottom-toolbar>
