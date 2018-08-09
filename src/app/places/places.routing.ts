@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
+import {AdminGuard} from '../admin.guard';
 
 import {PlacesAddComponent} from './places-add/places-add.component';
 import {PlacesDetailsComponent} from './places-details/places-details.component';
@@ -14,13 +15,14 @@ const placesRoutes: Routes = [
     children: [
       {
         path: 'placeslist',
-        component: PlacesListComponent
+        component: PlacesListComponent,
       }, {
-        path: 'addplace',
-        component: PlacesAddComponent
-      }, {
-        path: 'placedetails',
+        path: 'placeslist/:id',
         component: PlacesDetailsComponent
+      }, {
+        path: 'placeslist/:id/form',
+        component: PlacesAddComponent,
+        canActivate: [AdminGuard],
       }, {
         path: '',
         redirectTo: 'placeslist',

@@ -7,6 +7,7 @@ import {PlacesDetailsComponent} from './places-details/places-details.component'
 import {PlacesListComponent} from './places-list/places-list.component';
 import {PlacesRouting} from './places.routing';
 import {PlacesService} from './places.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import {PlacesService} from './places.service';
   imports: [
     CommonModule,
     PlacesRouting,
-    SharedModule
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule
   ],
   exports: [PlacesRouting],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
