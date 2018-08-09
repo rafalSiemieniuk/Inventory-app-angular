@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DevicesService } from '../devices.service';
-import { getDefaultService } from '../../../../node_modules/@types/selenium-webdriver/edge';
 import { AuthService } from '../../core/auth.service';
 
 
