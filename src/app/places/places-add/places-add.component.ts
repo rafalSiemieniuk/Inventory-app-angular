@@ -37,7 +37,7 @@ export class PlacesAddComponent implements OnInit {
     }
   }
   getDevice(placeId) {
-    this.placesService.getById(placeId).subscribe(item => {
+    this.placesService.getPlace(placeId).subscribe(item => {
       this.editForm.setValue(item);
     });
   }

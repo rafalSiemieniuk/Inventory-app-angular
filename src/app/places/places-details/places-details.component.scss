@@ -1,0 +1,10 @@
+.center {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+}
+
+.left {
+  position: absolute;
+  z-index: 20;
+}

@@ -28,6 +28,7 @@ const placesRoutes: Routes = [
         redirectTo: 'placeslist',
         pathMatch: 'full'
       }
+
     ]
   }
 ];

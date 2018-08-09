@@ -10,13 +10,12 @@
     </ons-button>
   </ons-card>
   <ons-card *ngIf="filteredPlaces">
-    <ons-list>
-      <div *ngFor="let place of filteredPlaces">
-        <ons-list__item>
-          <span class="list-item__title">{{place.name}}</span>
-        </ons-list__item>
-      </div>
+    <ons-list *ngFor="let place of filteredPlaces">
+      <ons-list-item modifier="nodivider" [routerLink]="place.id" tappable>
+        {{place.name}}
+      </ons-list-item>
     </ons-list>
   </ons-card>
 
 </ons-page>
+

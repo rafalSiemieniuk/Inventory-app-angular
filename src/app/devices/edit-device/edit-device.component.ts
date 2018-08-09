@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DevicesService } from '../devices.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import * as ons from 'onsenui';
+import { Location } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-edit-device',
@@ -14,7 +18,7 @@ export class EditDeviceComponent implements OnInit {
   backhref = '../../';
 
 
-  constructor(private route: ActivatedRoute, private devicesService: DevicesService) { }
+  constructor(private route: ActivatedRoute, private devicesService: DevicesService, private location: Location) { }
   editForm = new FormGroup({
     id: new FormControl(),
     name: new FormControl(),
@@ -39,5 +43,7 @@ export class EditDeviceComponent implements OnInit {
   onSubmit() {
     const device = this.editForm.value;
     this.devicesService.saveDevice(device).subscribe();
+    this.location.back();
+    ons.notification.toast('Submit successful', { timeout: 2000 });
   }
 }

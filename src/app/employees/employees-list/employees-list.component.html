@@ -6,7 +6,7 @@
         <div class="content__wrap">
         </div>
         <ons-list class="ons-list">
-          <ons-list-item class="ons-list__item" tappable *ngFor="let employee of employees">
+          <ons-list-item class="ons-list__item" tappable *ngFor="let employee of employees" [routerLink]="employee.id">
             <div class="left">
               <img class="list-item__thumbnail" [src]="employee.avatar">
             </div>

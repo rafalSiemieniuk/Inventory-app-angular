@@ -16,10 +16,13 @@ export class PlacesService {
     return this.http.get(`api/offices`);
   }
 
-  getById(id): Observable<any> {
+  getPlace(id): Observable<any> {
     return this.http.get(`api/places/${id}`);
   }
 
+  getDevices(): Observable<any> {
+    return this.http.get(`api/devices`);
+  }
   saveDevice(place): Observable<any> {
     if (place.id) {
       return this.http.put(`api/places/${place.id}`, place);
