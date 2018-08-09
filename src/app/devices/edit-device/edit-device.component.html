@@ -12,16 +12,20 @@
       <form [formGroup]="editForm">
         <div class="content">
           <div class="content__input">
-            <ons-input modifier="material" formControlName="name" type="text" placeholder="Device Name" ngDefaultControl></ons-input>
+            <ons-input class="content__input__txt" modifier="material" formControlName="name" type="text" placeholder="Device Name" ngDefaultControl></ons-input>
           </div>
-
           <div class="content__input">
-            <textarea class="textarea" rows="4" modifier="material" formControlName="description" type="text" placeholder="Device Description" ngDefaultControl></textarea>
+            <ons-input class="content__input__txt" modifier="material" formControlName="imageUrl" type="text" placeholder="Device Image URL"
+              ngDefaultControl></ons-input>
           </div>
-          <div class="content__btn">
-            <ons-button (click)="onSubmit()" modifier="large">Save</ons-button>
+          <div class="content__input">
+            <textarea class="textarea" rows="4" modifier="material" formControlName="description" type="text" placeholder="Device Description"
+              ngDefaultControl></textarea>
           </div>
         </div>
+        <ons-bottom-toolbar class="bottom-bar">
+          <ons-button (click)="onSubmit()" modifier="large">Save</ons-button>
+        </ons-bottom-toolbar>
       </form>
     </ons-card>
   </div>
