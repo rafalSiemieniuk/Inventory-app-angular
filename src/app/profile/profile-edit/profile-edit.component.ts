@@ -34,6 +34,7 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
     this.profileService.getOffices().subscribe((items) => {
       this.offices = items;
+      this.profileForm.controls.officeId.setValue(this.offices[0].name);
     });
     this.authService.user.subscribe(user => {
       this.profileForm.setValue(user);
