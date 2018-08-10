@@ -36,8 +36,10 @@ export class MyDevicesIdentifyComponent implements OnInit {
         this.deviceService.newObject = object[object.objectType];
         if (object.user) {
           this.objectName = `${object.user.firstName} ${object.user.lastName}`;
-        } else {
+        } else if (object.place) {
           this.objectName = object.place.name;
+        } else {
+          return;
         }
       });
     }
