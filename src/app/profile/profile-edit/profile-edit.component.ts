@@ -52,13 +52,18 @@ export class ProfileEditComponent implements OnInit {
 
     this.data.officeId = editedOffice.id;
 
-    this.profileService.updateUser(this.data).subscribe(() => {
-      this.authService.getUpdatedUser().subscribe(() => {
-        this.location.back();
-        ons.notification.toast('Submit successful', { timeout: 2000 });
+    if (!this.data.firstName || this.data.firstName.replace(/\s/g, '') === '') {
+      return ons.notification.alert('Incorrect First Name');
+    } else if (!this.data.lastName || this.data.lastName.replace(/\s/g, '') === '') {
+      return ons.notification.alert('Incorrect Last Name');
+    } else {
+      this.profileService.updateUser(this.data).subscribe(() => {
+        this.authService.getUpdatedUser().subscribe(() => {
+          this.location.back();
+          ons.notification.toast('Submit successful', { timeout: 2000 });
+        });
       });
-    });
-
+    }
   }
 }
 
