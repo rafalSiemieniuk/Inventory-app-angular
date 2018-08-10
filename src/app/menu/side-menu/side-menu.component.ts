@@ -26,11 +26,17 @@ export class SideMenuComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(user => {
       this.filterByAdmin(user);
+      this.filterByNav();
     });
   }
 
   filterByAdmin(user) {
-    this.links = routes.filter(item => (item.adminRequired && user.isAdmin) || !item.adminRequired);
+    this.links = routes.filter(item =>
+      (item.adminRequired && user.isAdmin) || !item.adminRequired);
+  }
+
+  filterByNav(){
+    this.links = this.links.filter(item => item.showInNav);
   }
 }
 
