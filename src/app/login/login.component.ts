@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       (error) => {
         if (error.status === 401) {
           ons.notification.alert('Incorrect login or password');
-          ons.notification.toast('Login unsuccessful', { timeout: 2000 });
         }
       });
   }
