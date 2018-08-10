@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { AuthService } from '../../core/auth.service';
 import { Location } from '@angular/common';
@@ -51,9 +51,13 @@ export class ProfileEditComponent implements OnInit {
 
     this.data.officeId = editedOffice.id;
 
-    this.profileService.updateUser(this.data).subscribe();
-    this.location.back();
-    ons.notification.toast('Submit successful', { timeout: 2000 });
+    this.profileService.updateUser(this.data).subscribe(() => {
+      this.authService.getUpdatedUser().subscribe(() => {
+        this.location.back();
+        ons.notification.toast('Submit successful', { timeout: 2000 });
+      });
+    });
+
   }
 }
 
