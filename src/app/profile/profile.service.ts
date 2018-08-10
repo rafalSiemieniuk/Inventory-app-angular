@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs-compat/Observable';
-import { AuthService } from '../core/auth.service';
 
 
 @Injectable()
 export class ProfileService {
 
 
-    constructor(private http: HttpClient, private authService: AuthService) {
+    constructor(private http: HttpClient) {
 
     }
     getOffices(): Observable<Array<any>> {
