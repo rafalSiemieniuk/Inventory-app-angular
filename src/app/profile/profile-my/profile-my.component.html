@@ -2,8 +2,7 @@
   <div class="center">
 
     <ons-list-item modifier="nodivider"  class="center">
-      <img *ngIf="user.avatar" class="list-item__thumbnail" style="width: 50%; height: auto" src="{{user.avatar}}"/>
-      <img *ngIf="!user.avatar" src="../../../assets/Papirus-Team-Papirus-Status-Avatar-default.svg">
+      <img class="list-item__thumbnail img" src="{{user.avatar}}"/>
     </ons-list-item>
 
     <ons-button modifier="quiet" class="content-right" routerLink="../edit">

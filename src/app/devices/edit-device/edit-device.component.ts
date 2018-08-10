@@ -42,8 +42,14 @@ export class EditDeviceComponent implements OnInit {
 
   onSubmit() {
     const device = this.editForm.value;
-    this.devicesService.saveDevice(device).subscribe();
-    this.location.back();
-    ons.notification.toast('Submit successful', { timeout: 2000 });
+
+    if (device.name || device.name.replace(/\s/g, '') === '') {
+      return ons.notification.alert('Incorrect Name');
+    } else {
+      this.devicesService.saveDevice(device).subscribe(() => {
+        this.location.back();
+        ons.notification.toast('Submit successful', { timeout: 2000 });
+      });
+    }
   }
 }
