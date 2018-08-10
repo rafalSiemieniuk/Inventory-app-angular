@@ -36,9 +36,15 @@ export class AuthService {
           this.user.next(user);
           this.user.complete();
         },
-        () => this.userObs = null)
+          () => this.userObs = null)
         .pipe(shareReplay());
     }
     return this.userObs;
+  }
+
+  getUpdatedUser() {
+    this.user = new AsyncSubject();
+    this.userObs = null;
+    return this.getCurrentUser();
   }
 }
