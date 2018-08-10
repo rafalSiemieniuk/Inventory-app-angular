@@ -18,11 +18,11 @@ export class IdentifyDetailsComponent implements OnInit {
   ngOnInit() {
     this.service.getObject(this.route.snapshot.params.id)
       .subscribe(item => {
-        ons.notification.toast('Correct device', { timeout: 2000 });
+        ons.notification.toast('Successful operation', { timeout: 2000 });
         this.detectType(item);
       }, () => {
         this.router.navigate(['/identify/identifyqr']);
-        ons.notification.toast('Incorrect device', { timeout: 2000 });
+        ons.notification.toast('Unsuccessful operation', { timeout: 2000 });
     });
   }
 
