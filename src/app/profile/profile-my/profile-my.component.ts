@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../core/auth.service';
 import {ProfileService} from '../profile.service';
 import {Office} from '../../office.iterface';
+import * as ons from 'onsenui';
 
 @Component({
   selector: 'app-profile-my',
@@ -26,6 +27,13 @@ export class ProfileMyComponent implements OnInit {
         this.office = item.find(office =>
         office.id === user.officeId);
     });
+  }
+  changeToAndroid(){
+    if (ons.platform.isIOS()) {
+      ons.platform.select('android');
+    }
+    return true;
+
   }
 
 }

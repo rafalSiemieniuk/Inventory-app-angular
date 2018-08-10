@@ -4,7 +4,7 @@ import { MenuService } from '../menu.service';
 import { routes } from '../routes';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../core/auth.service';
-
+import * as ons from 'onsenui';
 
 @Component({
   selector: 'ons-page[Menu]',
@@ -27,6 +27,8 @@ export class SideMenuComponent implements OnInit {
     this.authService.user.subscribe(user => {
       this.filterByAdmin(user);
       this.filterByNav();
+      // ons.disableAutoStyling();
+      // ons.platform.select('ios');
     });
   }
 
@@ -35,9 +37,13 @@ export class SideMenuComponent implements OnInit {
       (item.adminRequired && user.isAdmin) || !item.adminRequired);
   }
 
-  filterByNav(){
+  filterByNav() {
     this.links = this.links.filter(item => item.showInNav);
   }
+  isAndroid() {
+    return ons.platform.isAndroid();
+  }
+
 }
 
 
