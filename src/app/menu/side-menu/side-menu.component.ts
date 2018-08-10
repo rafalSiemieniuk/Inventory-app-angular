@@ -27,8 +27,6 @@ export class SideMenuComponent implements OnInit {
     this.authService.user.subscribe(user => {
       this.filterByAdmin(user);
       this.filterByNav();
-      // ons.disableAutoStyling();
-      // ons.platform.select('ios');
     });
   }
 
