@@ -5,9 +5,15 @@
         <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
       </ons-toolbar-button>
     </div>
-    <div class="center">
+    <div  class="center">
+      <span *ngIf="title">
       {{title | uppercase }}
+      </span>
+      <div *ngIf="!title" style="margin-top: 8px">
+        <img src="../../../assets/logo.png">
+      </div>
     </div>
+
   </ons-toolbar>
 
     <router-outlet></router-outlet>
