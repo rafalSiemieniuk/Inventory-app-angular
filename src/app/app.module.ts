@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { AdminGuard } from './admin.guard';
 import { IdentifyModule } from './identify/identify.module';
 import { SharedModule } from './shared/shared.module';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -33,6 +34,7 @@ import { SharedModule } from './shared/shared.module';
     MenuComponent,
     PageNotFoundComponent,
     LoginComponent,
+    LogoutComponent,
   ],
   exports: [
     OnsenModule,

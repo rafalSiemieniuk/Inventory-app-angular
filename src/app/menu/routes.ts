@@ -26,6 +26,11 @@ export const routes: any[] = [ {
   name: 'Places',
   router: 'places',
   showInNav: true
+},
+{
+  name: 'Logout',
+  router: 'logout',
+  showInNav: true
 }
 ];
 
