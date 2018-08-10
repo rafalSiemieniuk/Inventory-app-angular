@@ -43,7 +43,7 @@ export class EditDeviceComponent implements OnInit {
   onSubmit() {
     const device = this.editForm.value;
 
-    if (device.name || device.name.replace(/\s/g, '') === '') {
+    if (!device.name || device.name.replace(/\s/g, '') === '') {
       return ons.notification.alert('Incorrect Name');
     } else {
       this.devicesService.saveDevice(device).subscribe(() => {
