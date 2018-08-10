@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IdentifyDetailsService} from './identify-details.service';
+import * as ons from 'onsenui';
 
 @Component({
   selector: 'app-identify-details',
@@ -15,7 +16,14 @@ export class IdentifyDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getObject(this.route.snapshot.params.id).subscribe(item => this.detectType(item));
+    this.service.getObject(this.route.snapshot.params.id)
+      .subscribe(item => {
+        ons.notification.toast('Correct device', { timeout: 2000 });
+        this.detectType(item);
+      }, () => {
+        this.router.navigate(['/identify/identifyqr']);
+        ons.notification.toast('Incorrect device', { timeout: 2000 });
+    });
   }
 
   detectType(object) {
