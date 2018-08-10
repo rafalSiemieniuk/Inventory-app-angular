@@ -16,17 +16,28 @@
           </ons-button>
         </div>
       </ons-list-item>
+      <ons-list-item class="ons-list__item center" *ngIf="device">
+        <div class="center">
+          <img class="list-item__thumbnail img" [src]="device.imageUrl">
+        </div>
+      </ons-list-item>
+      <ons-list-item class="ons-list__item center " *ngIf="device">
 
-      <div class="content" *ngIf="device">
-        <p>
-          Device ID: {{device.id}}
-        </p>
-        <app-qrcode-writer class="center" [code]="device.id" [scaleqr]="9"></app-qrcode-writer>
-     
-      </div>
+        <span class="list-item__title">
+          Device ID:
+        </span>
+        <span class="list-item__subtitle">{{device.id}}</span>
+      </ons-list-item>
+      <ons-list-item class="ons-list__item center" *ngIf="device">
+        <div class="content" *ngIf="device">
+
+          <app-qrcode-writer class="center" [code]="device.id" [scaleqr]="9"></app-qrcode-writer>
+
+        </div>
+      </ons-list-item>
     </ons-card>
   </div>
 </ons-page>
-<ons-bottom-toolbar class="bottom-bar" *ngIf="device" >
+<ons-bottom-toolbar class="bottom-bar" *ngIf="device">
   <ons-button routerLink="/devices/transfer/{{device.id}}" modifier="large">Transfer</ons-button>
 </ons-bottom-toolbar>
