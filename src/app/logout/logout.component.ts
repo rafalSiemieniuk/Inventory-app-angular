@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import * as ons from 'onsenui';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-logout',
@@ -10,14 +11,19 @@ import * as ons from 'onsenui';
 export class LogoutComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
-    ons.notification.toast('Logout successful', { timeout: 2000 });
-    ons.notification.alert('You have been logged out');
-    localStorage.removeItem('token');
     this.router.navigate([``]);
+    localStorage.removeItem('token');
+    this.authService.getUpdatedUser()
+      .subscribe(() => {
+        ons.notification.toast('Logout successful', { timeout: 2000 });
+      }, () => {
+        ons.notification.toast('Logout unsuccessful', { timeout: 2000 });
+      });
   }
 
 }
